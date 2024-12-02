@@ -5,6 +5,16 @@ A classifier model based on a large language model (LLM) that predicts whether a
 [Docs](https://docs.google.com/document/d/1Y_qYBZdE8Pni4qK7845W5_MYxziT3sN6zbevtgZJmhA/edit)
 </br>
 
+
+**Datasets:**:
+</br>
+The Chem app dataset: [Docs](https://github.com/ChangyunCho/ChemAP)
+</br>
+
+</br>
+The Chembl dataset: [Docs](https://huggingface.co/datasets/Moreza009/LLM-DrugApprovalPredictor)
+</br>
+
 ## Todo list:
 - [ ] Prerequisites:
     - [x] GitHub Repo
@@ -18,7 +28,7 @@ A classifier model based on a large language model (LLM) that predicts whether a
 - [ ] Assess(Get comments On The Overal Idea and Methods)
 - [ ] Method :
     - [ ] conceptual figures 
-    - [ ] EDA
+    - [x] EDA
     - [ ] Data analysis Plots
     - [ ] Data preprocessing:
         - [ ] . . .
