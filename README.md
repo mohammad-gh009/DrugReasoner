@@ -8,13 +8,12 @@ A classifier model based on a large language model (LLM) that predicts whether a
 
 **Datasets:**:
 </br>
-The Chem app dataset: [Docs](https://github.com/ChangyunCho/ChemAP)
+The Chem app dataset: https://github.com/ChangyunCho/ChemAP
 </br>
 
 </br>
-The Chembl dataset: [Docs](https://huggingface.co/datasets/Moreza009/LLM-DrugApprovalPredictor)
+The Chembl dataset: https://huggingface.co/datasets/Moreza009/LLM-DrugApprovalPredictor
 </br>
-
 ## Todo list:
 - [ ] Prerequisites:
     - [x] GitHub Repo
