@@ -46,3 +46,29 @@ The Chembl dataset: https://huggingface.co/datasets/Moreza009/LLM-DrugApprovalPr
 - [ ] Discussion
 - [ ] Supplementary:
     - [ ] . . .
+
+
+## Mohammad Reza:
+
+### papers to read: 
+
+- [ ] [ESM](https://www.nature.com/articles/s41598-021-02282-3)
+- [ ] [plapt](https://www.biorxiv.org/content/10.1101/2024.02.08.575577v3)
+
+
+### experiments: 
+
+
+
+- [ ] Chemap dataset: 
+
+    - [ ] chemberta 
+        - [ ] SMILES
+        - [ ] Fingerprints
+    - [ ] bert 
+        - [ ] SMILES
+        - [ ] Fingerprints
+    - [ ] xgboost 
+        - [ ] SMILES
+        - [ ] Fingerprints
+    - [ ] clustering embedding using sentence transformers: 
