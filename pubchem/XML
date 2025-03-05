@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<GeneSummaries
+    xmlns="http://pubchem.ncbi.nlm.nih.gov/pug_rest"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:schemaLocation="http://pubchem.ncbi.nlm.nih.gov/pug_rest https://pubchem.ncbi.nlm.nih.gov/pug_rest/pug_rest.xsd"
+>
+  <GeneSummary>
+    <GeneID>1956</GeneID>
+    <Symbol>EGFR</Symbol>
+    <Name>epidermal growth factor receptor</Name>
+    <TaxonomyID>9606</TaxonomyID>
+    <Taxonomy>Homo sapiens (human)</Taxonomy>
+    <Description>The protein encoded by this gene is a transmembrane glycoprotein that is a member of the protein kinase superfamily. This protein is a receptor for members of the epidermal growth factor family. EGFR is a cell surface protein that binds to epidermal growth factor, thus inducing receptor dimerization and tyrosine autophosphorylation leading to cell proliferation. Mutations in this gene are associated with lung cancer. EGFR is a component of the cytokine storm which contributes to a severe form of Coronavirus Disease 2019 (COVID-19) resulting from infection with severe acute respiratory syndrome coronavirus-2 (SARS-CoV-2). [provided by RefSeq, Jul 2020]</Description>
+    <Synonym>ERBB</Synonym>
+    <Synonym>ERBB1</Synonym>
+    <Synonym>ERRP</Synonym>
+    <Synonym>HER1</Synonym>
+    <Synonym>NISBD2</Synonym>
+    <Synonym>NNCIS</Synonym>
+    <Synonym>PIG61</Synonym>
+    <Synonym>mENA</Synonym>
+    <Synonym>EGFR vIII</Synonym>
+    <Synonym>avian erythroblastic leukemia viral (v-erb-b) oncogene homolog</Synonym>
+    <Synonym>cell growth inhibiting protein 40</Synonym>
+    <Synonym>cell proliferation-inducing protein 61</Synonym>
+    <Synonym>epidermal growth factor receptor tyrosine kinase domain</Synonym>
+    <Synonym>erb-b2 receptor tyrosine kinase 1</Synonym>
+    <Synonym>proto-oncogene c-ErbB-1</Synonym>
+    <Synonym>receptor tyrosine-protein kinase erbB-1</Synonym>
+  </GeneSummary>
+</GeneSummaries>
