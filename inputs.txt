@@ -1,3 +1,0 @@
-(0, 'C[C@]1(O)CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]21C')
-
-{'predicted_class_base': 1, 'predicted_class_prob_base': 0.9819175601005554}
