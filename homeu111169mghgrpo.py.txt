@@ -1,0 +1,5 @@
+/home/u111169/mgh/grpo.py 
+pip install vllm 
+
+توی ورژن 8 نصب کنن. 
+
