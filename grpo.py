@@ -1,82 +1,94 @@
-
+# imports 
 import pandas as pd
 from datasets import Dataset
-
-df = pd.read_csv("/content/drive/MyDrive/Papers/Original_Papers/Llm_drug_prediction/Code/rdkit_only/rdkit_for_main/train_reason.csv" )
-
-df["labels"].replace({1:"<APPROVED>" , 0:"<NOT APPROVED>"} , inplace=True)
-
-
+import re
+from trl import GRPOConfig, GRPOTrainer
 from unsloth import FastLanguageModel
 import torch
-max_seq_length = 10000 # Can increase for longer reasoning traces
-lora_rank = 16 # Larger rank = smarter, but slower
+
+
+
+df = pd.read_csv("/home/u111169/mgh/train_reason_main.csv" )
+df["labels"].replace({"<APPROVED>":"approved" , "<NOT APPROVED>":"unapproved"} , inplace=True)
+
+
+max_seq_length = 5000 
+lora_rank = 16 
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "meta-llama/meta-Llama-3.1-8B-Instruct",
+    model_name = "/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659",
     max_seq_length = max_seq_length,
-    load_in_4bit = True, # False for LoRA 16bit
-    fast_inference = True, # Enable vLLM fast inference
+    load_in_4bit = True, 
+    fast_inference = True, 
     max_lora_rank = lora_rank,
-    gpu_memory_utilization = 0.6, # Reduce if out of memory
+    gpu_memory_utilization = 0.6,
 )
 
 model = FastLanguageModel.get_peft_model(
     model,
-    r = lora_rank, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+    r = lora_rank, 
     target_modules = [
         "q_proj", "k_proj", "v_proj", "o_proj",
         "gate_proj", "up_proj", "down_proj",
-    ], # Remove QKVO if out of memory
+    ],
     lora_alpha = lora_rank,
     use_gradient_checkpointing = "unsloth", # Enable long context finetuning
     random_state = 3407,
 )
 
-import re
-from datasets import load_dataset, Dataset
+
 
 # Load and prep dataset
 SYSTEM_PROMPT = """
 You are a **chemist specializing in drug discovery and molecular modeling**, tasked with analyzing chemical compounds for drug-likeness and viability.
-Your goal is to determine the compound’s potential as a drug candidate by integrating these computational and experimental criteria.
-
+Your goal is to determine the compound’s potential as a drug candidate by integrating these computational criteria.
+think step by step and reason whether the compound will be approved or  unapproved.
+then label your final decession with approved and unapproved. 
+also provide a confident score for your final label based on your thinking(the confident score is between [0 , 1] range).
+Return a score close to 1 if the compound appears strongly approved or unapproved. If you're uncertain, return a score closer to 0, scaling it based on your level of uncertainty—the greater the uncertainty, the closer the score should be to zero.
 Respond in the following format:
-<reasoning>
+<think>
 ...
-</reasoning>
-<answer>
+</think>
+<label>
 ...
-</answer>
+</label>
+<score>
+...
+</score>
 """
 
 XML_COT_FORMAT = """\
-<reasoning>
-{reasoning}
-</reasoning>
-<answer>
-{answer}
-</answer>
+<think>
+{think}
+</think>
+<label>
+{label}
+</label>
+<score>
+{score}
+</score>
 """
 
 
-def extract_xml_answer(text: str) -> str:
-    answer = text.split("<answer>")[-1]
-    answer = answer.split("</answer>")[0]
+def extract_xml_label(text: str) -> str:
+    answer = text.split("<label>")[-1]
+    answer = answer.split("</label>")[0]
     return answer.strip()
 
-# uncomment middle messages for 1-shot prompting
-def get_gsm8k_questions(split = "train") -> Dataset:
+def extract_xml_score(text: str) -> str:
+    answer = text.split("<score>")[-1]
+    answer = answer.split("</score>")[0]
+    return answer.strip()
+
+def get_dataset(split = "train") -> Dataset:
     data = Dataset.from_pandas(df)
-    data = data.map(lambda x: { # type: ignore
+    data = data.map(lambda x: { 
         'prompt': [
             {'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': f"""
-            I have developed a model that can predict the drug likelibility of compound X.
-            This model outputs two lists:
-            1. The five most similar approved small molecules (with their properties and similarity scores).
-            2. The five most similar non-approved small molecules (with their properties and similarity scores).
-
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
             Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
 
             - RDKit Analysis of Compound X:
@@ -87,79 +99,118 @@ def get_gsm8k_questions(split = "train") -> Dataset:
             """}
         ],
         'answer': x['labels']
-    }) # type: ignore
-    return data # type: ignore
+    }) 
+    return data
 
-dataset = get_gsm8k_questions()
+dataset = get_dataset()
 
 # Reward functions
 def correctness_reward_func(prompts, completions, answer, **kwargs) -> list[float]:
     responses = [completion[0]['content'] for completion in completions]
     q = prompts[0][-1]['content']
-    extracted_responses = [extract_xml_answer(r) for r in responses]
-    print('-'*20, f"Question:\n{q}", f"\nAnswer:\n{answer[0]}", f"\nResponse:\n{responses[0]}", f"\nExtracted:\n{extracted_responses[0]}")
-    return [2.0 if r == a else 0.0 for r, a in zip(extracted_responses, answer)]
+    extracted_responses = [extract_xml_label(r).lower() for r in responses]
+    extracted_responses_score = [extract_xml_score(r) for r in responses]
+    print(f"{'-'*20}\nQuestion:\n{q}Answer:\n{answer[0]}Response:\n{responses[0]}Extracted:\n{extracted_responses[0]}Score:\n{extracted_responses_score[0]}\n\n\n\n\n\n")
+    return [3.0 if r == a else 0.0 for r, a in zip(extracted_responses, answer)]
 
 def int_reward_func(completions, **kwargs) -> list[float]:
     responses = [completion[0]['content'] for completion in completions]
-    extracted_responses = [extract_xml_answer(r) for r in responses]
-    return [0.5 if r in ["<APPROVED>", "<NOT APPROVED>"] else 0.0 for r in extracted_responses]
+    extracted_responses = [extract_xml_label(r).lower() for r in responses]
+    return [0.5 if r in ["approved", "unapproved"] else 0.0 for r in extracted_responses]
+    
+def int_score_reward_func(completions, **kwargs) -> list[float]:
+    responses = [completion[0]['content'] for completion in completions]
+    extracted_responses = [extract_xml_score(r) for r in responses]
+    return [0.5 if isinstance(r, (int, float)) and 0 <= r <= 1 else 0.0 for r in extracted_responses]
 
 def strict_format_reward_func(completions, **kwargs) -> list[float]:
     """Reward function that checks if the completion has a specific format."""
-    pattern = r"^<reasoning>\n.*?\n</reasoning>\n<answer>\n.*?\n</answer>\n$"
+    pattern = r"^<think>\n.*?\n</think>\n<label>\n.*?\n</label>\n<score>\n.*?\n</score>\n$"
     responses = [completion[0]["content"] for completion in completions]
     matches = [re.match(pattern, r) for r in responses]
     return [0.5 if match else 0.0 for match in matches]
 
 def soft_format_reward_func(completions, **kwargs) -> list[float]:
     """Reward function that checks if the completion has a specific format."""
-    pattern = r"<reasoning>.*?</reasoning>\s*<answer>.*?</answer>"
+    pattern = r"<think>.*?</think>\s*<label>.*?</label>\s*<score>.*?</score>"
     responses = [completion[0]["content"] for completion in completions]
     matches = [re.match(pattern, r) for r in responses]
     return [0.5 if match else 0.0 for match in matches]
 
+def confident_score_func(completions, answer, **kwargs): 
+    responses = [completion[0]['content'] for completion in completions]
+    extracted_label = [extract_xml_label(r).lower() for r in responses]
+    extracted_score = [extract_xml_score(r) for r in responses]
+    
+    count = 0.0
+    for r, a, s in zip(extracted_label, answer, extracted_score):
+        # Check if r is a float
+        try:
+            float_r = float(r)
+        except ValueError:
+            return [0.0]
+            
+        if r == a and s >= 0.7: 
+            count += 5.0
+        elif r == a and 0.7 > s >= 0.4: 
+            count += 1.0
+        elif r == a and 0.4 > s: 
+            count += 0.0
+        elif r != a and s >= 0.7: 
+            count += 0.0
+        elif r != a and 0.7 > s >= 0.4: 
+            count += 1.0
+        elif r != a and 0.4 > s: 
+            count += 5.0
+    return [count]
+
 def count_xml(text) -> float:
     count = 0.0
-    if text.count("<reasoning>\n") == 1:
+    if text.count("<think>\n") == 1:
         count += 0.125
-    if text.count("\n</reasoning>\n") == 1:
+    if text.count("\n</think>\n") == 1:
         count += 0.125
-    if text.count("\n<answer>\n") == 1:
+    if text.count("\n<label>\n") == 1:
         count += 0.125
-        count -= len(text.split("\n</answer>\n")[-1])*0.001
-    if text.count("\n</answer>") == 1:
+        count -= len(text.split("\n</label>\n")[-1])*0.001
+    if text.count("\n</label>") == 1:
         count += 0.125
-        count -= (len(text.split("\n</answer>")[-1]) - 1)*0.001
+        count -= (len(text.split("\n</label>")[-1]) - 1)*0.001
+    if text.count("\n<score>\n") == 1:
+        count += 0.125
+        count -= len(text.split("\n</score>\n")[-1])*0.001
+    if text.count("\n</score>") == 1:
+        count += 0.125
+        count -= (len(text.split("\n</score>")[-1]) - 1)*0.001
     return count
 
 def xmlcount_reward_func(completions, **kwargs) -> list[float]:
     contents = [completion[0]["content"] for completion in completions]
     return [count_xml(c) for c in contents]
 
-max_prompt_length = 7000
+max_prompt_length = 2000
 
-from trl import GRPOConfig, GRPOTrainer
 training_args = GRPOConfig(
     learning_rate = 5e-6,
     adam_beta1 = 0.9,
     adam_beta2 = 0.99,
     weight_decay = 0.1,
-    warmup_ratio = 0.1,
+    warmup_ratio = 0.01,
     lr_scheduler_type = "cosine",
     optim = "paged_adamw_8bit",
     logging_steps = 1,
     per_device_train_batch_size = 1,
-    gradient_accumulation_steps = 1, # Increase to 4 for smoother training
-    num_generations = 4, # Decrease if out of memory
+    gradient_accumulation_steps = 1,
+    num_generations = 8, # test 
     max_prompt_length = max_prompt_length,
     max_completion_length = max_seq_length - max_prompt_length,
     # num_train_epochs = 1, # Set to 1 for a full training run
-    max_steps = 250,
-    save_steps = 250,
+    max_steps = 10,
+    save_steps = 1,
     max_grad_norm = 0.1,
-    report_to = "none", # Can use Weights & Biases
-    output_dir = "outputs",
+    report_to = "none", 
+    output_dir = "/home/u111169/mgh",
+    #logging_dir = "/home/u111169/mgh/log"
 )
 
 trainer = GRPOTrainer(
@@ -171,6 +222,8 @@ trainer = GRPOTrainer(
         strict_format_reward_func,
         int_reward_func,
         correctness_reward_func,
+        int_score_reward_func,
+        confident_score_func,
     ],
     args = training_args,
     train_dataset = dataset,
