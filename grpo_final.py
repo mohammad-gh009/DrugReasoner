@@ -175,13 +175,18 @@ def correctness_reward_func(prompts, completions, answer, **kwargs) -> list[floa
     q = prompts[0][-1]['content']
     extracted_responses = [extract_xml_label(r).lower() for r in responses]
     extracted_responses_score = [extract_xml_score(r) for r in responses]
-    out = f"{'-'*20}\nQuestion:\n{q}\n\n\nAnswer\n\n\n:\n{answer[0]}\n\n\nResponse\n\n\n:\n{responses[0]}\n\n\nExtracted\n\n\n:\n{extracted_responses[0]}\n\n\nScore\n\n\n:\n{extracted_responses_score[0]}"
+    outputs = []
+    for i in range(4):
+        output = f"""{'-'*20}\n\n\n\n\nInput:\n{q}\n\n\nTrue_label:\n{answer[0]}\n\n\nResponse:\n{responses[i]}\n\n\nExtracted_label:\n{extracted_responses[i]}\n\n\nScore:\n{extracted_responses_score[i]}"""
+        outputs.append(output)
+    
+    combined_out = f"combined_out:\n\n{outputs[0]}\n\n{outputs[1]}\n\n{outputs[2]}\n\n{outputs[3]}"
     try:
         with open("/home/u111169/mgh/intermediate_out.txt", "a") as f:
-            f.write(out)
+            f.write(combined_out)
     except Exception as e:
         print(f"Failed to write to log file: {e}")    
-    print(out)
+    print(combined_out)
     return [3.0 if r == a else 0.0 for r, a in zip(extracted_responses, answer)]
 
 
