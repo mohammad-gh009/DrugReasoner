@@ -198,28 +198,28 @@ def int_score_reward_func(completions, **kwargs) -> list[float]:
 
     responses = [completion[0]['content'] for completion in completions]
     extracted_responses = [extract_xml_score(r) for r in responses]
-    return [0.5 if isinstance(r, (int, float)) and 0 <= r <= 1 else 0.0 for r in extracted_responses]
-
-
-
-def strict_format_reward_func(completions, **kwargs) -> list[float]:
-
-    """Reward function that checks if the completion has a specific format."""
-
-    pattern = r"^<think>\n.*?\n</think>\n<label>\n.*?\n</label>\n<score>\n.*?\n</score>\n$"
-    responses = [completion[0]["content"] for completion in completions]
-    matches = [re.match(pattern, r) for r in responses]
-    return [0.5 if match else 0.0 for match in matches]
+    def is_valid_score(value):
+        try:
+            num = float(value)
+            return num
+        except (ValueError, TypeError):
+            return False       
+    o = [] 
+    for r in extracted_responses: 
+        score = is_valid_score(r)
+        if score is not False and 0 <= score <= 1: 
+            o.append(0.5)
+        else: 
+            o.append(0.0)
+    return o
 
 
 
 def soft_format_reward_func(completions, **kwargs) -> list[float]:
-
     """Reward function that checks if the completion has a specific format."""
-
-    pattern = r"<think>.*?</think>\s*<label>.*?</label>\s*<score>.*?</score>"
+    pattern = r"^\s*<think>.*?</think>\s*<label>.*?</label>\s*<score>.*?</score>\s*"
     responses = [completion[0]["content"] for completion in completions]
-    matches = [re.match(pattern, r) for r in responses]
+    matches = [re.match(pattern, r, re.DOTALL) for r in responses]
     return [0.5 if match else 0.0 for match in matches]
 
 
@@ -248,12 +248,35 @@ def count_xml(text) -> float:
     return count
 
 
-
 def xmlcount_reward_func(completions, **kwargs) -> list[float]:
 
     contents = [completion[0]["content"] for completion in completions]
     return [count_xml(c) for c in contents]
 
+
+def count_confident_score(r, a, s) -> float:
+
+    count = 0.0
+
+    try:
+        float_s = float(s)
+    except ValueError:
+        return 0.0
+
+    if r == a and float_s >= 0.7: 
+        count += 5.0
+    elif r == a and 0.7 > float_s >= 0.4: 
+        count += 2.0
+    elif r == a and 0.4 > float_s: 
+        count += 0.0
+    elif r != a and float_s >= 0.7: 
+        count -= 1.0
+    elif r != a and 0.7 > float_s >= 0.4: 
+        count += 0.0
+    elif r != a and 0.4 > float_s: 
+        count += 2.0
+
+    return count
 
 
 def confident_score_func(completions, answer, **kwargs): 
@@ -263,37 +286,16 @@ def confident_score_func(completions, answer, **kwargs):
     extracted_score = [extract_xml_score(r) for r in responses]
 
     
-
-    count = 0.0
+    list_f = []
 
     for r, a, s in zip(extracted_label, answer, extracted_score):
+        list_f.append(count_confident_score(r, a, s))
 
-        # Check if r is a float
-        try:
-            float_s = float(s)
-        except ValueError:
-            return [0.0]
 
-        if r == a and float_s >= 0.7: 
-            count += 5.0
-        elif r == a and 0.7 > float_s >= 0.4: 
-            count += 2.0
-        elif r == a and 0.4 > float_s: 
-            count += 0.0
-        elif r != a and float_s >= 0.7: 
-            count -= 1.0
-        elif r != a and 0.7 > float_s >= 0.4: 
-            count += 0.0
-        elif r != a and 0.4 > float_s: 
-            count += 2.0
-    return [count]
-
+    return list_f
 
 
 max_prompt_length = 2000
-
-
-
 
 
 training_args = GRPOConfig(
@@ -302,7 +304,7 @@ training_args = GRPOConfig(
     adam_beta1 = 0.9,
     adam_beta2 = 0.99,
     weight_decay = 0.1,
-    warmup_steps = 200,
+    warmup_steps = 100,
     lr_scheduler_type = "cosine",
     optim = "paged_adamw_8bit",
     logging_steps = 1,
@@ -328,7 +330,6 @@ trainer = GRPOTrainer(
     reward_funcs = [
         xmlcount_reward_func,
         soft_format_reward_func,
-        strict_format_reward_func,
         int_reward_func,
         correctness_reward_func,
         int_score_reward_func,
