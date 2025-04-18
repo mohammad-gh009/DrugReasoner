@@ -1,0 +1,635 @@
+INFO 04-14 02:43:23 [__init__.py:239] Automatically detected platform cuda.
+/home/u111169/mgh/grpo.py:6: UserWarning: WARNING: Unsloth should be imported before trl, transformers, peft to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+
+Please restructure your imports with 'import unsloth' at the top of your file.
+  from unsloth import FastLanguageModel
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Unsloth: Failed to patch Gemma3ForConditionalGeneration.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+/home/u111169/mgh/grpo.py:12: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df["labels"].replace({"<APPROVED>":"approved" , "<NOT APPROVED>":"unapproved"} , inplace=True)
+==((====))==  Unsloth 2025.3.19: Fast Llama patching. Transformers: 4.51.1. vLLM: 0.8.3.
+   \\   /|    Tesla V100-PCIE-32GB. Num GPUs = 1. Max memory: 31.739 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.6.0+cu124. CUDA: 7.0. CUDA Toolkit: 12.4. Triton: 3.2.0
+\        /    Bfloat16 = FALSE. FA [Xformers = 0.0.29.post3. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Unsloth: Your GPU does not support prefix caching - will disable!
+Unsloth: vLLM loading /home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659 with actual GPU utilization = 59.35%
+Unsloth: Your GPU has CUDA compute capability 7.0 with VRAM = 31.74 GB.
+Unsloth: Using conservativeness = 1.0. Chunked prefill tokens = 5000. Num Sequences = 160.
+Unsloth: vLLM's KV Cache can use up to 3.8 GB. Also swap space = 6 GB.
+WARNING 04-14 02:43:30 [config.py:2704] Casting torch.bfloat16 to torch.float16.
+INFO 04-14 02:43:38 [config.py:600] This model supports multiple tasks: {'classify', 'embed', 'score', 'generate', 'reward'}. Defaulting to 'generate'.
+WARNING 04-14 02:43:38 [arg_utils.py:1708] Compute Capability < 8.0 is not supported by the V1 Engine. Falling back to V0. 
+Unsloth: vLLM Bitsandbytes config using kwargs = {'load_in_8bit': False, 'load_in_4bit': True, 'bnb_4bit_compute_dtype': 'float16', 'bnb_4bit_quant_storage': 'uint8', 'bnb_4bit_quant_type': 'fp4', 'bnb_4bit_use_double_quant': False, 'llm_int8_enable_fp32_cpu_offload': False, 'llm_int8_has_fp16_weight': False, 'llm_int8_skip_modules': [], 'llm_int8_threshold': 6.0}
+INFO 04-14 02:43:38 [llm_engine.py:242] Initializing a V0 LLM engine (v0.8.3) with config: model='/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659', speculative_config=None, tokenizer='/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=5000, download_dir=None, load_format=LoadFormat.BITSANDBYTES, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=bitsandbytes, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda:0, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":0,"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":160}, use_cached_outputs=False, 
+/share/apps/eb/Python/3.11.5-GCCcore-13.2.0/envs/vllm/lib/python3.11/site-packages/vllm/executor/uniproc_executor.py:29: UserWarning: Failed to get the IP address, using 0.0.0.0 by default.The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+  get_ip(), get_open_port())
+INFO 04-14 02:43:39 [cuda.py:240] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+INFO 04-14 02:43:39 [cuda.py:289] Using XFormers backend.
+[W414 02:43:39.054285434 socket.cpp:204] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W414 02:43:39.054494554 socket.cpp:204] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+INFO 04-14 02:43:39 [parallel_state.py:957] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 04-14 02:43:39 [model_runner.py:1110] Starting to load model /home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659...
+INFO 04-14 02:43:39 [loader.py:1155] Loading weights with BitsAndBytes quantization. May take a while ...
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.71it/s]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.07it/s]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.70it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.60it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.76it/s]
+
+INFO 04-14 02:43:42 [punica_selector.py:18] Using PunicaWrapperGPU.
+INFO 04-14 02:43:42 [model_runner.py:1146] Model loading took 5.4442 GiB and 2.529107 seconds
+INFO 04-14 02:43:53 [worker.py:267] Memory profiling takes 10.66 seconds
+INFO 04-14 02:43:53 [worker.py:267] the current vLLM instance can use total_gpu_memory (31.74GiB) x gpu_memory_utilization (0.59) = 18.84GiB
+INFO 04-14 02:43:53 [worker.py:267] model weights take 5.44GiB; non_torch_memory takes 0.07GiB; PyTorch activation peak memory takes 0.77GiB; the rest of the memory reserved for KV Cache is 12.55GiB.
+INFO 04-14 02:43:53 [executor_base.py:112] # cuda blocks: 6426, # CPU blocks: 3072
+INFO 04-14 02:43:53 [executor_base.py:117] Maximum concurrency for 5000 tokens per request: 20.56x
+INFO 04-14 02:43:56 [model_runner.py:1456] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes:   0%|          | 0/23 [00:00<?, ?it/s]Capturing CUDA graph shapes:   4%|▍         | 1/23 [00:01<00:34,  1.55s/it]Capturing CUDA graph shapes:   9%|▊         | 2/23 [00:02<00:31,  1.48s/it]Capturing CUDA graph shapes:  13%|█▎        | 3/23 [00:04<00:29,  1.46s/it]Capturing CUDA graph shapes:  17%|█▋        | 4/23 [00:05<00:27,  1.45s/it]Capturing CUDA graph shapes:  22%|██▏       | 5/23 [00:07<00:25,  1.39s/it]Capturing CUDA graph shapes:  26%|██▌       | 6/23 [00:08<00:23,  1.36s/it]Capturing CUDA graph shapes:  30%|███       | 7/23 [00:09<00:21,  1.34s/it]Capturing CUDA graph shapes:  35%|███▍      | 8/23 [00:11<00:19,  1.32s/it]Capturing CUDA graph shapes:  39%|███▉      | 9/23 [00:12<00:18,  1.32s/it]Capturing CUDA graph shapes:  43%|████▎     | 10/23 [00:13<00:17,  1.31s/it]Capturing CUDA graph shapes:  48%|████▊     | 11/23 [00:14<00:15,  1.30s/it]Capturing CUDA graph shapes:  52%|█████▏    | 12/23 [00:16<00:14,  1.29s/it]Capturing CUDA graph shapes:  57%|█████▋    | 13/23 [00:17<00:12,  1.24s/it]Capturing CUDA graph shapes:  61%|██████    | 14/23 [00:18<00:10,  1.21s/it]Capturing CUDA graph shapes:  65%|██████▌   | 15/23 [00:19<00:09,  1.18s/it]Capturing CUDA graph shapes:  70%|██████▉   | 16/23 [00:20<00:08,  1.16s/it]Capturing CUDA graph shapes:  74%|███████▍  | 17/23 [00:21<00:06,  1.15s/it]Capturing CUDA graph shapes:  78%|███████▊  | 18/23 [00:22<00:05,  1.14s/it]Capturing CUDA graph shapes:  83%|████████▎ | 19/23 [00:24<00:04,  1.14s/it]Capturing CUDA graph shapes:  87%|████████▋ | 20/23 [00:25<00:03,  1.13s/it]Capturing CUDA graph shapes:  91%|█████████▏| 21/23 [00:26<00:02,  1.12s/it]Capturing CUDA graph shapes:  96%|█████████▌| 22/23 [00:27<00:01,  1.12s/it]Capturing CUDA graph shapes: 100%|██████████| 23/23 [00:28<00:00,  1.00it/s]Capturing CUDA graph shapes: 100%|██████████| 23/23 [00:28<00:00,  1.22s/it]
+INFO 04-14 02:44:24 [model_runner.py:1598] Graph capturing finished in 28 secs, took 3.07 GiB
+INFO 04-14 02:44:24 [llm_engine.py:448] init engine (profile, create kv cache, warmup model) took 41.89 seconds
+/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659 does not have a padding token! Will use pad_token = <|finetune_right_pad_id|>.
+Unsloth 2025.3.19 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+Map:   0%|          | 0/2497 [00:00<?, ? examples/s]Map:  65%|██████▌   | 1626/2497 [00:00<00:00, 16185.04 examples/s]Map: 100%|██████████| 2497/2497 [00:00<00:00, 14851.46 examples/s]
+WARNING:accelerate.utils.other:Detected kernel version 5.3.18, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 2,497 | Num Epochs = 1 | Total steps = 10
+O^O/ \_/ \    Batch size per device = 4 | Gradient accumulation steps = 1
+\        /    Data Parallel GPUs = 1 | Total batch size (4 x 1 x 1) = 4
+ "-____-"     Trainable parameters = 41,943,040/8,000,000,000 (0.52% trained)
+  0%|          | 0/10 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'max_length': 131072, 'bos_token_id': 128000, 'eos_token_id': [128001, 128008, 128009]}. If this is not desired, please set these values explicitly.
+--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 467.65, 'LogP': 4.41, 'Molecular Refractivity': 130.2, 'TPSA': 62.16, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 4, 'Chiral Centers': 7, 'Heavy Atoms': 34, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': 'None'}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.99, 'Rdkit information': {'Molecular Weight': 504.11, 'LogP': 4.84, 'Molecular Refractivity': 137.45, 'TPSA': 62.16, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 4, 'Chiral Centers': 7, 'Heavy Atoms': 35, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.99, 'Rdkit information': {'Molecular Weight': 467.65, 'LogP': 4.41, 'Molecular Refractivity': 130.2, 'TPSA': 62.16, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 4, 'Chiral Centers': 7, 'Heavy Atoms': 34, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 339.44, 'LogP': 2.51, 'Molecular Refractivity': 93.93, 'TPSA': 52.93, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 2, 'Chiral Centers': 4, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['isolated_alkene']}}, 4: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 357.45, 'LogP': 1.71, 'Molecular Refractivity': 95.41, 'TPSA': 73.16, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 2, 'Chiral Centers': 5, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 356.44, 'LogP': 1.67, 'Molecular Refractivity': 94.14, 'TPSA': 66.76, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 2, 'Chiral Centers': 4, 'Heavy Atoms': 26, 'Formal Charge': 1, 'Total Rings': 6, 'Structural Alerts': ['quaternary_nitrogen_2']}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 476.57, 'LogP': 3.09, 'Molecular Refractivity': 129.09, 'TPSA': 86.38, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 5, 'Heavy Atoms': 35, 'Formal Charge': 0, 'Total Rings': 7, 'Structural Alerts': ['Michael_acceptor_1']}}, 2: { 'similarity score': 0.86, 'Rdkit information': {'Molecular Weight': 513.03, 'LogP': 3.51, 'Molecular Refractivity': 136.34, 'TPSA': 86.38, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 5, 'Heavy Atoms': 36, 'Formal Charge': 0, 'Total Rings': 7, 'Structural Alerts': ['Michael_acceptor_1']}}, 3: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 469.62, 'LogP': 4.88, 'Molecular Refractivity': 126.17, 'TPSA': 49.39, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 34, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': ['peroxide']}}, 4: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 277.5, 'LogP': 5.3, 'Molecular Refractivity': 86.9, 'TPSA': 12.03, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 1, 'Rotatable Bonds': 4, 'Chiral Centers': 0, 'Heavy Atoms': 20, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 321.8, 'LogP': 2.05, 'Molecular Refractivity': 83.92, 'TPSA': 49.77, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 0, 'Chiral Centers': 4, 'Heavy Atoms': 22, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}}}
+            Answer:
+approvedResponse:
+<think>
+
+To analyze the likelihood of compound X receiving regulatory approval, I will compare its properties with those of the most similar approved and unapproved molecules.
+
+The approved molecules have a high similarity score (0.99 and 0.93) with compound X, indicating that they share many properties. Specifically:
+
+* Both approved molecules and compound X have a high molecular weight (467.65 and 504.11) and a moderate to high number of hydrogen bond acceptors (5 and 6).
+* They also have a moderate to high number of rotatable bonds (4 and 5), which can contribute to their bioavailability and pharmacodynamics.
+* Additionally, both approved molecules and compound X have a similar number of heavy atoms (34 and 35), which can affect their stability and toxicity.
+
+On the other hand, the unapproved molecules have a lower similarity score (0.89, 0.86, 0.85, and 0.85) with compound X, indicating that they share fewer properties. However, some of these unapproved molecules also have properties that are similar to those of the approved molecules, such as:
+
+* A moderate to high number of hydrogen bond acceptors (6 and 7).
+* A moderate to high number of rotatable bonds (5 and 6).
+* A moderate to high molecular weight (476.57 and 513.03).
+
+Overall, the approved molecules appear to have properties that are more similar to those of compound X, suggesting that it may have a higher likelihood of approval.
+
+Considering the properties of the approved and unapproved molecules, I would estimate the likelihood of compound X receiving regulatory approval as follows:
+
+1. The probability of compound X being approved is the product of the probabilities of its individual properties being favorable, which can be estimated as follows:
+
+   * Probability of high molecular weight: 0.9 (similar to approved molecule 1)
+   * Probability of moderate to high number of hydrogen bond acceptors: 0.9 (similar to approved molecule 1)
+   * Probability of moderate to high number of rotatable bonds: 0.8 (similar to approved molecule 1, with some variation)
+   * Probability of similar number of heavy atoms: 0.8 (similar to approved molecule 1, with some variation)
+
+   The overall probability of compound X being approved would be the product of these individual probabilities: 0.9 * 0.9 * 0.8 * 0.8 = 0.5184
+
+   However, this is a very rough estimate and should be taken as a rough order of magnitude rather than a precise probability.
+
+2. The confidence level of this estimate is difficult to quantify, but I would rate it as follows:
+
+   * Low confidence: 0.0 (completely uncertain)
+   * Moderate confidence: 0.2 (some uncertainty)
+   * High confidence: 0.5 (reasonable confidence)
+   * Very high confidence: 0.8 (quite confident)
+   * Extremely high confidence: 1.0 (very confident)
+
+   Based on the analysis above, I would rate the confidence level of this estimate as 0.5 (moderate confidence). This suggests that there is some uncertainty in the estimate, but the analysis suggests that compound X may have a reasonable chance of approval.
+
+</think>
+
+<label>approved</label>
+
+<score>0.5</score>Extracted:
+approvedScore:
+0.5
+
+
+
+
+
+
+ 10%|█         | 1/10 [01:51<16:40, 111.15s/it]                                               {'loss': -0.0, 'grad_norm': 0.1433458924293518, 'learning_rate': 0.0, 'rewards/xmlcount_reward_func': -0.5062500238418579, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.5, 'rewards/correctness_reward_func': 3.0, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 2.9937498569488525, 'reward_std': 0.9395135045051575, 'completion_length': 499.5, 'kl': 0.0, 'epoch': 0.0}
+ 10%|█         | 1/10 [01:51<16:40, 111.15s/it]Unsloth: Will smartly offload gradients to save VRAM!
+--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 557.84, 'LogP': 5.97, 'Molecular Refractivity': 156.37, 'TPSA': 55.84, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 4, 'Chiral Centers': 10, 'Heavy Atoms': 40, 'Formal Charge': 1, 'Total Rings': 6, 'Structural Alerts': ['quaternary_nitrogen_2']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.91, 'Rdkit information': {'Molecular Weight': 529.79, 'LogP': 4.41, 'Molecular Refractivity': 148.31, 'TPSA': 59.00, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 10, 'Heavy Atoms': 38, 'Formal Charge': 1, 'Total Rings': 6, 'Structural Alerts': ['isolated_alkene', 'quaternary_nitrogen_2']}}, 2: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 517.78, 'LogP': 5.25, 'Molecular Refractivity': 144.69, 'TPSA': 66.84, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 8, 'Heavy Atoms': 36, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['isolated_alkene']}}, 3: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 517.78, 'LogP': 5.25, 'Molecular Refractivity': 144.69, 'TPSA': 66.84, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 11, 'Heavy Atoms': 36, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['isolated_alkene']}}, 4: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 609.69, 'LogP': 1.41, 'Molecular Refractivity': 148.31, 'TPSA': 59.00, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 10, 'Heavy Atoms': 39, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['isolated_alkene', 'quaternary_nitrogen_2']}}, 5: { 'similarity score': 0.86, 'Rdkit information': {'Molecular Weight': 354.45, 'LogP': 2.65, 'Molecular Refractivity': 98.66, 'TPSA': 65.56, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 1, 'Chiral Centers': 5, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['indol_3yl_alk(461)']}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.84, 'Rdkit information': {'Molecular Weight': 290.45, 'LogP': 3.96, 'Molecular Refractivity': 82.74, 'TPSA': 37.30, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 7, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 344.5, 'LogP': 4.84, 'Molecular Refractivity': 96.88, 'TPSA': 43.37, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 6, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 332.53, 'LogP': 4.99, 'Molecular Refractivity': 96.52, 'TPSA': 37.30, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 1, 'Chiral Centers': 8, 'Heavy Atoms': 24, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.81, 'Rdkit information': {'Molecular Weight': 312.45, 'LogP': 4.64, 'Molecular Refractivity': 90.86, 'TPSA': 34.14, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 5, 'Heavy Atoms': 23, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['Michael_acceptor_1']}}, 5: { 'similarity score': 0.81, 'Rdkit information': {'Molecular Weight': 378.49, 'LogP': 5.11, 'Molecular Refractivity': 109.87, 'TPSA': 28.26, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 28, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}}}
+            Answer:
+approvedResponse:
+<think>
+To analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules, we need to compare its properties with those of approved and unapproved molecules.
+
+The properties of compound X are:
+{'Molecular Weight': 557.84, 'LogP': 5.97, 'Molecular Refractivity': 156.37, 'TPSA': 55.84, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 4, 'Chiral Centers': 10, 'Heavy Atoms': 40, 'Formal Charge': 1, 'Total Rings': 6, 'Structural Alerts': ['quaternary_nitrogen_2']}
+
+The properties of the most similar approved and unapproved molecules are:
+{'most similar approved drugs': {1: {'similarity score': 0.91, 'Rdkit information': {'Molecular Weight': 529.79, 'LogP': 4.41, 'Molecular Refractivity': 148.31, 'TPSA': 59.00, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 10, 'Heavy Atoms': 38, 'Formal Charge': 1, 'Total Rings': 6, 'Structural Alerts': ['isolated_alkene', 'quaternary_nitrogen_2']}}, 2: {'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 517.78, 'LogP': 5.25, 'Molecular Refractivity': 144.69, 'TPSA': 66.84, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 8, 'Heavy Atoms': 36, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['isolated_alkene']}}, 3: {'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 517.78, 'LogP': 5.25, 'Molecular Refractivity': 144.69, 'TPSA': 66.84, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 5, 'Chiral Centers': 11, 'Heavy Atoms': 36, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['isolated_alkene']}}, 4: {'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 609.69, 'LogP': 1.41, 'Molecular Refractivity': 148.31, 'TPSA': 59.00, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 10, 'Heavy Atoms': 39, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['isolated_alkene', 'quaternary_nitrogen_2']}}, 5: {'similarity score': 0.86, 'Rdkit information': {'Molecular Weight': 354.45, 'LogP': 2.65, 'Molecular Refractivity': 98.66, 'TPSA': 65.56, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 1, 'Chiral Centers': 5, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['indol_3yl_alk(461)']}}},'most similar non-approved drugs': {1: {'similarity score': 0.84, 'Rdkit information': {'Molecular Weight': 290.45, 'LogP': 3.96, 'Molecular Refractivity': 82.74, 'TPSA': 37.30, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 7, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 2: {'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 344.5, 'LogP': 4.84, 'Molecular Refractivity': 96.88, 'TPSA': 43.37, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 6, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 3: {'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 332.53, 'LogP': 4.99, 'Molecular Refractivity': 96.52, 'TPSA': 37.30, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 1, 'Chiral Centers': 8, 'Heavy Atoms': 24, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 4: {'similarity score': 0.81, 'Rdkit information': {'Molecular Weight': 312.45, 'LogP': 4.64, 'Molecular Refractivity': 90.86, 'TPSA': 34.14, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 5, 'Heavy Atoms': 23, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['Michael_acceptor_1']}}, 5: {'similarity score': 0.81, 'Rdkit information': {'Molecular Weight': 378.49, 'LogP': 5.11, 'Molecular Refractivity': 109.87, 'TPSA': 28.26, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 28, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}}}}
+
+The most similar approved molecule to compound X has a similarity score of 0.91, which is relatively high. This suggests that compound X's properties are similar to those of an approved molecule.
+
+The most similar non-approved molecule to compound X has a similarity score of 0.84, which is also relatively high. This suggests that compound X's properties are similar to those of a non-approved molecule.
+
+Based on these analysis, it appears that compound X's likelihood of regulatory approval is moderate. The high similarity scores with both approved and non-approved molecules suggest that compound X may have properties that are similar to those of approved molecules.
+
+However, it is also worth noting that the presence of structural alerts such as 'quaternary_nitrogen_2' and 'isolated_alkene' in compound X's properties may indicate potential issues with its safety or efficacy.
+
+Therefore, our final determination is that compound X has a moderate likelihood of regulatory approval based on its similarity to known molecules.
+
+<score>
+0.6
+</score>
+</think>
+<label>
+approved
+</label>Extracted:
+approvedScore:
+0.6
+
+
+
+
+
+
+ 20%|██        | 2/10 [06:45<29:11, 218.91s/it]                                               {'loss': 0.0, 'grad_norm': 0.19909238815307617, 'learning_rate': 5e-06, 'rewards/xmlcount_reward_func': -2.6287498474121094, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.5, 'rewards/correctness_reward_func': 2.25, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 0.12125003337860107, 'reward_std': 1.6099015474319458, 'completion_length': 889.0, 'kl': 0.0, 'epoch': 0.0}
+ 20%|██        | 2/10 [06:45<29:11, 218.91s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 254.22, 'LogP': -1.51, 'Molecular Refractivity': 60.32, 'TPSA': 77.34, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 18, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['beta-keto/anhydride']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 232.24, 'LogP': 0.7, 'Molecular Refractivity': 60.09, 'TPSA': 75.27, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 17, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['beta-keto/anhydride']}}, 2: { 'similarity score': 0.78, 'Rdkit information': {'Molecular Weight': 262.31, 'LogP': 1.31, 'Molecular Refractivity': 70.79, 'TPSA': 66.48, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 19, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': ['beta-keto/anhydride', 'isolated_alkene', 'triple_bond']}}, 3: { 'similarity score': 0.76, 'Rdkit information': {'Molecular Weight': 252.27, 'LogP': 1.77, 'Molecular Refractivity': 70.34, 'TPSA': 58.20, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 19, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['hydantoin']}}, 4: { 'similarity score': 0.69, 'Rdkit information': {'Molecular Weight': 440.95, 'LogP': 4.63, 'Molecular Refractivity': 121.63, 'TPSA': 40.51, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 31, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.68, 'Rdkit information': {'Molecular Weight': 185.28, 'LogP': 0.57, 'Molecular Refractivity': 54.92, 'TPSA': 97.78, 'Hydrogen Bond_Donors': 5, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 13, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 226.28, 'LogP': 1.18, 'Molecular Refractivity': 58.48, 'TPSA': 75.27, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 4, 'Chiral Centers': 0, 'Heavy Atoms': 16, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': ['beta-keto/anhydride']}}, 2: { 'similarity score': 0.73, 'Rdkit information': {'Molecular Weight': 457.96, 'LogP': 3.23, 'Molecular Refractivity': 123.73, 'TPSA': 72.60, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 8, 'Chiral Centers': 0, 'Heavy Atoms': 32, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['Aliphatic_long_chain', 'hydantoin', 'imine_1']}}, 3: { 'similarity score': 0.73, 'Rdkit information': {'Molecular Weight': 111.1, 'LogP': -0.63, 'Molecular Refractivity': 26.75, 'TPSA': 55.96, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 0, 'Heavy Atoms': 8, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['imine_1', 'Three-membered_heterocycle']}}, 4: { 'similarity score': 0.73, 'Rdkit information': {'Molecular Weight': 393.44, 'LogP': 1.26, 'Molecular Refractivity': 96.97, 'TPSA': 124.09, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 28, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['beta-keto/anhydride']}}, 5: { 'similarity score': 0.7, 'Rdkit information': {'Molecular Weight': 111.1, 'LogP': -0.84, 'Molecular Refractivity': 27.51, 'TPSA': 58.46, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 0, 'Heavy Atoms': 8, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['Three-membered_heterocycle']}}}}
+            Answer:
+unapprovedResponse:
+<think>
+
+To analyze the likelihood of Compound X receiving regulatory approval, we need to compare its properties with those of approved and unapproved molecules. We have two lists of molecules:'most similar approved drugs' and'most similar non-approved drugs'. Each molecule in these lists has a similarity score, which indicates how similar it is to Compound X.
+
+We can calculate a weighted average of the similarity scores to get a sense of how similar Compound X is to approved and unapproved molecules. We can then use this information to make a decision about the likelihood of Compound X receiving regulatory approval.
+
+Here's a possible way to do this:
+
+1. Calculate the weighted average of the similarity scores for approved and unapproved molecules.
+
+Weighted average of approved molecules:
+(0.94 + 0.78 + 0.76) / 3 = 0.8533
+
+Weighted average of unapproved molecules:
+(0.85 + 0.73 + 0.73 + 0.73 + 0.7) / 5 = 0.78
+
+2. Compare the weighted averages to determine the likelihood of Compound X receiving regulatory approval.
+
+Since the weighted average of approved molecules (0.8533) is higher than the weighted average of unapproved molecules (0.78), this suggests that Compound X is more similar to approved molecules and may be more likely to receive regulatory approval.
+
+However, it's essential to consider the structural alerts for each molecule. For example, the approved molecules have a structural alert for 'beta-keto/anhydride', which might be a concern for Compound X.
+
+3. Consider the structural alerts for each molecule.
+
+The approved molecules have a structural alert for 'beta-keto/anhydride', which is also present in Compound X. However, the approved molecules also have other structural alerts that are not present in Compound X.
+
+4. Determine the likelihood of Compound X receiving regulatory approval.
+
+Considering the structural alerts and the weighted averages, it seems that Compound X is more similar to approved molecules and has a lower risk of structural alerts. However, it's essential to note that this is just a computational analysis and not a definitive prediction.
+
+Based on this analysis, it appears that Compound X may be more likely to receive regulatory approval.
+
+</think>
+
+<label>
+
+Approved
+
+</label>
+
+<score>
+
+0.84
+
+</score>Extracted:
+approvedScore:
+0.84
+
+
+
+
+
+
+ 30%|███       | 3/10 [08:39<19:56, 170.92s/it]                                               {'loss': -0.0, 'grad_norm': 0.15894293785095215, 'learning_rate': 4.849231551964771e-06, 'rewards/xmlcount_reward_func': -1.5379999876022339, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.125, 'rewards/correctness_reward_func': 0.0, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': -1.4129999876022339, 'reward_std': 0.3882670998573303, 'completion_length': 519.5, 'kl': -9.894371032714844e-06, 'epoch': 0.0}
+ 30%|███       | 3/10 [08:39<19:56, 170.92s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 149.22, 'LogP': 0.15, 'Molecular Refractivity': 38.61, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': 'None'}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.96, 'Rdkit information': {'Molecular Weight': 131.18, 'LogP': 0.59, 'Molecular Refractivity': 35.16, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain']}}, 2: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 146.19, 'LogP': -0.47, 'Molecular Refractivity': 38.52, 'TPSA': 89.34, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 5, 'Chiral Centers': 1, 'Heavy Atoms': 10, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain']}}, 3: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 213.66, 'LogP': 1.86, 'Molecular Refractivity': 55.5, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 0, 'Heavy Atoms': 14, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 171.24, 'LogP': 1.37, 'Molecular Refractivity': 46.83, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 12, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 165.19, 'LogP': 0.64, 'Molecular Refractivity': 45.76, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 3, 'Chiral Centers': 1, 'Heavy Atoms': 12, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.99, 'Rdkit information': {'Molecular Weight': 196.11, 'LogP': -0.04, 'Molecular Refractivity': 36.65, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['heavy_metal']}}, 2: { 'similarity score': 0.99, 'Rdkit information': {'Molecular Weight': 149.22, 'LogP': 0.15, 'Molecular Refractivity': 38.61, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 213.66, 'LogP': 1.86, 'Molecular Refractivity': 55.5, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 14, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 243.33, 'LogP': 0.4, 'Molecular Refractivity': 64.68, 'TPSA': 87.71, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 5, 'Chiral Centers': 3, 'Heavy Atoms': 16, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['Aliphatic_long_chain']}}, 5: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 172.27, 'LogP': 3.21, 'Molecular Refractivity': 50.25, 'TPSA': 37.30, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 1, 'Rotatable Bonds': 8, 'Chiral Centers': 0, 'Heavy Atoms': 12, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain']}}}}
+            Answer:
+approvedResponse:
+<think>
+To analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules, we need to consider the properties and structural alerts of the most similar approved and non-approved drugs.
+
+The most similar approved drug to compound X has a similarity score of 0.96, and its properties are: 'Molecular Weight': 131.18, 'LogP': 0.59, 'Molecular Refractivity': 35.16, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 5, 'Chiral Centers': 0, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain'].
+
+The most similar non-approved drug to compound X has a similarity score of 0.99, and its properties are: 'Molecular Weight': 196.11, 'LogP': -0.04, 'Molecular Refractivity': 36.65, 'TPSA': 63.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 9, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['heavy_metal'].
+
+Considering these properties, compound X seems to have a good similarity to the approved drug, but it also has some structural alerts, such as 'heavy_metal' in the most similar non-approved drug, which might be a concern.
+
+</think>
+<label>
+Approved
+</label>
+<score>
+0.95
+</score>
+
+Note: The final decision is based on the fact that compound X has a higher similarity score with approved drugs (0.96) compared to non-approved drugs (0.99), and its properties are similar to those of the approved drug. However, the presence of structural alerts like 'heavy_metal' in the most similar non-approved drug is a concern. Therefore, the confident score for approving the compound is 0.95. If the similarity score with approved drugs was lower or if there were more significant structural concerns, the decision might be different.Extracted:
+approvedScore:
+0.95
+
+
+
+
+
+
+ 40%|████      | 4/10 [10:07<13:50, 138.39s/it]                                               {'loss': -0.0, 'grad_norm': 0.170710489153862, 'learning_rate': 4.415111107797445e-06, 'rewards/xmlcount_reward_func': -1.529249906539917, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.5, 'rewards/correctness_reward_func': 1.5, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 0.47074997425079346, 'reward_std': 1.8599026203155518, 'completion_length': 444.75, 'kl': -7.271766662597656e-06, 'epoch': 0.0}
+ 40%|████      | 4/10 [10:07<13:50, 138.39s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 228.25, 'LogP': 2.97, 'Molecular Refractivity': 66.81, 'TPSA': 60.69, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 17, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['stilbene']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 270.24, 'LogP': 2.58, 'Molecular Refractivity': 72.91, 'TPSA': 90.90, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 20, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 303.36, 'LogP': 2.06, 'Molecular Refractivity': 84.01, 'TPSA': 92.95, 'Hydrogen Bond_Donors': 5, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 6, 'Chiral Centers': 0, 'Heavy Atoms': 22, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.92, 'Rdkit information': {'Molecular Weight': 287.36, 'LogP': 2.35, 'Molecular Refractivity': 82.34, 'TPSA': 72.72, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 6, 'Chiral Centers': 0, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.92, 'Rdkit information': {'Molecular Weight': 287.36, 'LogP': 2.35, 'Molecular Refractivity': 82.34, 'TPSA': 72.72, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 6, 'Chiral Centers': 2, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.91, 'Rdkit information': {'Molecular Weight': 225.29, 'LogP': 1.52, 'Molecular Refractivity': 62.49, 'TPSA': 72.72, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 16, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 364.41, 'LogP': 3.25, 'Molecular Refractivity': 103.52, 'TPSA': 96.07, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 27, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 240.26, 'LogP': 3.03, 'Molecular Refractivity': 69.58, 'TPSA': 49.69, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 18, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['stilbene']}}, 3: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 189.64, 'LogP': 1.02, 'Molecular Refractivity': 49.78, 'TPSA': 66.48, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 12, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': ['catechol_A(92)', 'catechol']}}, 4: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 348.4, 'LogP': 4.42, 'Molecular Refractivity': 99.14, 'TPSA': 69.92, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 2, 'Chiral Centers': 2, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 290.27, 'LogP': 1.55, 'Molecular Refractivity': 72.62, 'TPSA': 110.38, 'Hydrogen Bond_Donors': 5, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 1, 'Chiral Centers': 2, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['catechol_A(92)', 'catechol']}}}}
+            Answer:
+approvedResponse:
+<think>
+To analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules, we will compare its properties with those of the most similar approved and unapproved molecules.
+
+The properties of compound X are:
+{'Molecular Weight': 228.25, 'LogP': 2.97, 'Molecular Refractivity': 66.81, 'TPSA': 60.69, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 17, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['stilbene']}
+
+The most similar approved molecule has a similarity score of 0.94 and its properties are:
+{'Molecular Weight': 270.24, 'LogP': 2.58, 'Molecular Refractivity': 72.91, 'TPSA': 90.90, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 20, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}
+
+The most similar unapproved molecule has a similarity score of 0.9 and its properties are:
+{'Molecular Weight': 364.41, 'LogP': 3.25, 'Molecular Refractivity': 103.52, 'TPSA': 96.07, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 27, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}
+
+Comparing these properties, we can see that compound X has a smaller molecular weight and a lower logP compared to the most similar approved molecule. Additionally, compound X has a lower TPSA and fewer hydrogen bond acceptors compared to the most similar approved molecule.
+
+However, compound X also has a similar number of rotatable bonds and a similar number of heavy atoms compared to the most similar unapproved molecule. Furthermore, compound X has a structural alert of'stilbene', which is also present in the most similar unapproved molecule.
+
+Considering these similarities and differences, it appears that compound X has a moderate similarity to both approved and unapproved molecules. Therefore, its likelihood of receiving regulatory approval is difficult to determine based solely on its similarity to known molecules.
+
+However, considering the general trend in the pharmaceutical industry, where many approved drugs have logP values ranging from 1 to 5 and molecular weights in the range of 200-500 g/mol, and also considering the fact that compound X has a moderate similarity to approved molecules, I would lean towards a slightly positive verdict for compound X.
+
+</think>
+
+<label>
+Approved
+</label>
+
+<score>
+0.4
+</score>Extracted:
+approvedScore:
+0.4
+
+
+
+
+
+
+ 50%|█████     | 5/10 [11:57<10:40, 128.14s/it]                                               {'loss': -0.0, 'grad_norm': 0.3130391240119934, 'learning_rate': 3.7500000000000005e-06, 'rewards/xmlcount_reward_func': -1.6397500038146973, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.375, 'rewards/correctness_reward_func': 2.25, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 0.9852499961853027, 'reward_std': 1.8028863668441772, 'completion_length': 502.0, 'kl': -8.225440979003906e-06, 'epoch': 0.0}
+ 50%|█████     | 5/10 [11:57<10:40, 128.14s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 446.52, 'LogP': -1.89, 'Molecular Refractivity': 108.81, 'TPSA': 127.12, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 7, 'Rotatable Bonds': 10, 'Chiral Centers': 8, 'Heavy Atoms': 31, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.97, 'Rdkit information': {'Molecular Weight': 424.53, 'LogP': 2.44, 'Molecular Refractivity': 111.44, 'TPSA': 124.29, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 10, 'Chiral Centers': 8, 'Heavy Atoms': 30, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 360.49, 'LogP': 3.54, 'Molecular Refractivity': 102.28, 'TPSA': 77.76, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 8, 'Chiral Centers': 5, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene', 'triple_bond']}}, 3: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 354.49, 'LogP': 3.04, 'Molecular Refractivity': 98.14, 'TPSA': 97.99, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 12, 'Chiral Centers': 5, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}}, 4: { 'similarity score': 0.92, 'Rdkit information': {'Molecular Weight': 432.6, 'LogP': 4.19, 'Molecular Refractivity': 122.45, 'TPSA': 86.99, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 13, 'Chiral Centers': 5, 'Heavy Atoms': 31, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}}, 5: { 'similarity score': 0.92, 'Rdkit information': {'Molecular Weight': 462.54, 'LogP': 2.2, 'Molecular Refractivity': 115.89, 'TPSA': 138.20, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 7, 'Rotatable Bonds': 6, 'Chiral Centers': 7, 'Heavy Atoms': 33, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 398.5, 'LogP': 3.29, 'Molecular Refractivity': 110.66, 'TPSA': 86.99, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 8, 'Chiral Centers': 6, 'Heavy Atoms': 29, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['isolated_alkene', 'triple_bond']}}, 2: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 344.45, 'LogP': 2.73, 'Molecular Refractivity': 93.73, 'TPSA': 74.60, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 2, 'Chiral Centers': 5, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['isolated_alkene']}}, 3: { 'similarity score': 0.89, 'Rdkit information': {'Molecular Weight': 386.49, 'LogP': 3.3, 'Molecular Refractivity': 103.28, 'TPSA': 80.67, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 3, 'Chiral Centers': 5, 'Heavy Atoms': 28, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['isolated_alkene']}}, 4: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 344.5, 'LogP': 4.84, 'Molecular Refractivity': 96.88, 'TPSA': 43.37, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 6, 'Heavy Atoms': 25, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 321.51, 'LogP': 3.1, 'Molecular Refractivity': 93.78, 'TPSA': 66.48, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 3, 'Chiral Centers': 7, 'Heavy Atoms': 23, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['isolated_alkene']}}}}
+            Answer:
+approvedResponse:
+<think>
+To make a prediction about the drug approval of compound X, I will analyze the properties of the most similar approved and unapproved molecules in the provided data.
+
+Based on the properties listed in the 'Rdkit information' of the most similar approved molecules, I notice that they all have a relatively high molecular weight, ranging from 360.49 to 462.54, and a moderate to high logP value, ranging from 2.2 to 4.19. Additionally, all of these molecules have a moderate to high molecular refractivity, ranging from 98.14 to 122.45, and a moderate to high number of hydrogen bond donors and acceptors.
+
+In contrast, the most similar unapproved molecules have a lower molecular weight, ranging from 321.51 to 398.5, and a moderate logP value, ranging from 2.73 to 3.29. Their molecular refractivity is also relatively low, ranging from 93.73 to 110.66. Furthermore, these unapproved molecules tend to have a lower number of hydrogen bond donors and acceptors.
+
+Considering these properties, I would say that compound X is more likely to be approved as a drug because it shares many characteristics with the most similar approved molecules, such as a high molecular weight and a moderate to high logP value. However, it's worth noting that the similarity scores provided in the data suggest that compound X is only moderately similar to the approved molecules, with a maximum similarity score of 0.97.
+
+To make a prediction, I would take into account the properties of both the most similar approved and unapproved molecules. Based on the data, I would give a relatively high chance of approval to compound X, but with some uncertainty. Therefore, I would predict that compound X is likely to be **approved**.
+
+The confident score for my prediction is **0.85**.
+</think>
+<label>
+approved
+</label>
+<score>
+0.85
+</score>Extracted:
+approvedScore:
+0.85
+
+
+
+
+
+
+ 60%|██████    | 6/10 [13:07<07:13, 108.40s/it]                                               {'loss': -0.0, 'grad_norm': 0.20953969657421112, 'learning_rate': 2.9341204441673267e-06, 'rewards/xmlcount_reward_func': -0.6992500424385071, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.375, 'rewards/correctness_reward_func': 2.25, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 1.9257500171661377, 'reward_std': 1.1099448204040527, 'completion_length': 377.0, 'kl': -6.794929504394531e-06, 'epoch': 0.0}
+ 60%|██████    | 6/10 [13:07<07:13, 108.40s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 205.64, 'LogP': 0.5, 'Molecular Refractivity': 49.73, 'TPSA': 73.58, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 13, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 185.23, 'LogP': 2.15, 'Molecular Refractivity': 56.78, 'TPSA': 22.00, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 14, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 226.28, 'LogP': 2.64, 'Molecular Refractivity': 65.83, 'TPSA': 42.85, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 17, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 207.27, 'LogP': 2.44, 'Molecular Refractivity': 58.45, 'TPSA': 42.23, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 15, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['N-hydroxyl_pyridine']}}, 4: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 321.83, 'LogP': 3.67, 'Molecular Refractivity': 84.64, 'TPSA': 29.54, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 3, 'Chiral Centers': 1, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.86, 'Rdkit information': {'Molecular Weight': 167.21, 'LogP': 0.65, 'Molecular Refractivity': 46.99, 'TPSA': 52.49, 'Hydrogen Bond_Donors': 3, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 3, 'Chiral Centers': 1, 'Heavy Atoms': 12, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': 'None'}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.9, 'Rdkit information': {'Molecular Weight': 348.42, 'LogP': 4.37, 'Molecular Refractivity': 100.52, 'TPSA': 34.15, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 5, 'Chiral Centers': 1, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 2: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 351.45, 'LogP': 3.19, 'Molecular Refractivity': 100.76, 'TPSA': 54.46, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 4, 'Chiral Centers': 0, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.86, 'Rdkit information': {'Molecular Weight': 409.92, 'LogP': 4.37, 'Molecular Refractivity': 111.4, 'TPSA': 56.07, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 3, 'Chiral Centers': 0, 'Heavy Atoms': 29, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 291.8, 'LogP': 4.09, 'Molecular Refractivity': 80.26, 'TPSA': 43.09, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 19, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['thiophene_amino_Aa(45)']}}, 5: { 'similarity score': 0.85, 'Rdkit information': {'Molecular Weight': 147.18, 'LogP': 1.66, 'Molecular Refractivity': 44.22, 'TPSA': 36.02, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 1, 'Rotatable Bonds': 1, 'Chiral Centers': 0, 'Heavy Atoms': 11, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': 'None'}}}}
+            Answer:
+approvedResponse:
+<think>
+To predict the likelihood of compound X receiving regulatory approval, we need to analyze its similarity to approved and unapproved molecules.
+
+Let's first calculate the average similarity score of compound X to approved molecules.
+
+Approved similarity scores: 0.9, 0.88, 0.88, 0.87, 0.86
+Average approved similarity score: (0.9 + 0.88 + 0.88 + 0.87 + 0.86) / 5 = 0.88
+
+Next, let's calculate the average similarity score of compound X to unapproved molecules.
+
+Unapproved similarity scores: 0.9, 0.88, 0.86, 0.85, 0.85
+Average unapproved similarity score: (0.9 + 0.88 + 0.86 + 0.85 + 0.85) / 5 = 0.87
+
+Now, let's compare the average similarity scores of compound X to approved and unapproved molecules. We can use these comparisons to determine the likelihood of compound X receiving regulatory approval.
+
+The average similarity score of compound X to approved molecules (0.88) is slightly higher than the average similarity score to unapproved molecules (0.87).
+
+This suggests that compound X has a higher similarity to approved molecules than unapproved molecules. However, this does not necessarily mean that compound X will be approved.
+
+We also need to consider other factors such as the structural alerts, molecular weight, logP, molecular refractivity, TPSA, hydrogen bond donors, hydrogen bond acceptors, rotatable bonds, chiral centers, heavy atoms, formal charge, and total rings.
+
+Furthermore, the similarity scores can be misleading. For example, a compound with a high similarity score to an approved molecule may still have significant differences in its structure or properties that could lead to regulatory issues.
+
+Therefore, we need to carefully examine the properties and structural alerts of compound X before making a final decision.
+
+In conclusion, based on the similarity scores alone, it appears that compound X has a moderate to high likelihood of receiving regulatory approval.
+
+However, we need to be cautious and consider other factors before making a final decision.
+
+Based on our analysis, we can assign a confidence score to our decision.
+
+If we are certain that compound X will be approved, the confidence score would be close to 1.
+
+If we are uncertain, the confidence score would be closer to 0.
+
+In this case, we are moderately confident that compound X will be approved, but we also recognize the potential risks and uncertainties.
+
+Therefore, we can assign a confidence score of 0.85 to our decision.
+
+</think>
+
+<label>
+Approved
+</label>
+
+<score>
+0.85
+</score>Extracted:
+approvedScore:
+0.85
+
+
+
+
+
+
+ 70%|███████   | 7/10 [14:43<05:12, 104.11s/it]                                               {'loss': -0.0, 'grad_norm': 0.12073972076177597, 'learning_rate': 2.0658795558326745e-06, 'rewards/xmlcount_reward_func': -1.152750015258789, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.25, 'rewards/correctness_reward_func': 0.75, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': -0.15274998545646667, 'reward_std': 1.3584716320037842, 'completion_length': 501.25, 'kl': -5.4836273193359375e-06, 'epoch': 0.0}
+ 70%|███████   | 7/10 [14:43<05:12, 104.11s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 687.06, 'LogP': 13.5, 'Molecular Refractivity': 219.03, 'TPSA': 52.6, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 29, 'Chiral Centers': 0, 'Heavy Atoms': 50, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.78, 'Rdkit information': {'Molecular Weight': 330.51, 'LogP': 6.47, 'Molecular Refractivity': 104.94, 'TPSA': 26.30, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 14, 'Chiral Centers': 0, 'Heavy Atoms': 24, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}}, 2: { 'similarity score': 0.64, 'Rdkit information': {'Molecular Weight': 926.11, 'LogP': 0.94, 'Molecular Refractivity': 237.09, 'TPSA': 319.61, 'Hydrogen Bond_Donors': 12, 'Hydrogen_Bond Acceptors': 17, 'Rotatable Bonds': 3, 'Chiral Centers': 19, 'Heavy Atoms': 65, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.64, 'Rdkit information': {'Molecular Weight': 926.11, 'LogP': 0.94, 'Molecular Refractivity': 237.09, 'TPSA': 319.61, 'Hydrogen Bond_Donors': 12, 'Hydrogen_Bond Acceptors': 17, 'Rotatable Bonds': 3, 'Chiral Centers': 10, 'Heavy Atoms': 65, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.63, 'Rdkit information': {'Molecular Weight': 924.09, 'LogP': 0.71, 'Molecular Refractivity': 236.99, 'TPSA': 319.61, 'Hydrogen Bond_Donors': 12, 'Hydrogen_Bond Acceptors': 17, 'Rotatable Bonds': 3, 'Chiral Centers': 19, 'Heavy Atoms': 65, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.6, 'Rdkit information': {'Molecular Weight': 452.54, 'LogP': 4.68, 'Molecular Refractivity': 118.47, 'TPSA': 75.99, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 5, 'Rotatable Bonds': 12, 'Chiral Centers': 4, 'Heavy Atoms': 32, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.61, 'Rdkit information': {'Molecular Weight': 400.65, 'LogP': 8.42, 'Molecular Refractivity': 128.03, 'TPSA': 26.30, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 14, 'Chiral Centers': 0, 'Heavy Atoms': 29, 'Formal Charge': 0, 'Total Rings': 0, 'Structural Alerts': ['isolated_alkene']}}, 2: { 'similarity score': 0.56, 'Rdkit information': {'Molecular Weight': 480.69, 'LogP': 6.15, 'Molecular Refractivity': 135.0, 'TPSA': 93.06, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 6, 'Rotatable Bonds': 19, 'Chiral Centers': 3, 'Heavy Atoms': 34, 'Formal Charge': 0, 'Total Rings': 1, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}}, 3: { 'similarity score': 0.52, 'Rdkit information': {'Molecular Weight': 905.04, 'LogP': 4.28, 'Molecular Refractivity': 228.33, 'TPSA': 240.11, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 17, 'Rotatable Bonds': 9, 'Chiral Centers': 11, 'Heavy Atoms': 64, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['>_2_ester_groups', 'isolated_alkene', 'Michael_acceptor_1', 'polyene']}}, 4: { 'similarity score': 0.52, 'Rdkit information': {'Molecular Weight': 331.28, 'LogP': 2.54, 'Molecular Refractivity': 80.93, 'TPSA': 104.97, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 7, 'Rotatable Bonds': 6, 'Chiral Centers': 0, 'Heavy Atoms': 24, 'Formal Charge': 0, 'Total Rings': 2, 'Structural Alerts': ['nitro_group', 'Oxygen-nitrogen_single_bond', 'phenol_ester']}}, 5: { 'similarity score': 0.52, 'Rdkit information': {'Molecular Weight': 464.94, 'LogP': 2.0, 'Molecular Refractivity': 117.89, 'TPSA': 108.61, 'Hydrogen Bond_Donors': 4, 'Hydrogen_Bond Acceptors': 7, 'Rotatable Bonds': 9, 'Chiral Centers': 5, 'Heavy Atoms': 32, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['Aliphatic_long_chain']}}}}
+            Answer:
+approvedResponse:
+<think>
+
+To determine the likelihood of compound X receiving regulatory approval, I will analyze its similarity to known approved and unapproved molecules.
+
+Compound X has a molecular weight of 687.06, logP of 13.5, and a molecular refractivity of 219.03.
+
+The most similar approved molecule is the one with a similarity score of 0.78, which has a logP of 6.47 and a molecular refractivity of 104.94.
+
+The most similar unapproved molecule is the one with a similarity score of 0.61, which has a logP of 8.42 and a molecular refractivity of 128.03.
+
+Since compound X has a high similarity score with both approved and unapproved molecules, its approval depends on various factors such as its pharmacokinetic properties, pharmacological activity, and safety profile.
+
+</think>
+
+<label>
+
+Based on the analysis, I would label compound X as **unapproved**, as it has a high similarity score with unapproved molecules and lacks a clear indication of a favorable pharmacokinetic and pharmacological profile.
+
+</label>
+
+<score>
+
+The confident score for this label is **0.8**. This is because while compound X has some properties similar to approved molecules, it also has significant differences with both approved and unapproved molecules, indicating a moderate to high level of uncertainty regarding its approval.
+
+</score>Extracted:
+based on the analysis, i would label compound x as **unapproved**, as it has a high similarity score with unapproved molecules and lacks a clear indication of a favorable pharmacokinetic and pharmacological profile.Score:
+The confident score for this label is **0.8**. This is because while compound X has some properties similar to approved molecules, it also has significant differences with both approved and unapproved molecules, indicating a moderate to high level of uncertainty regarding its approval.
+
+
+
+
+
+
+ 80%|████████  | 8/10 [16:02<03:12, 96.15s/it]                                               {'loss': -0.0, 'grad_norm': 0.19641156494617462, 'learning_rate': 1.2500000000000007e-06, 'rewards/xmlcount_reward_func': -0.4024999737739563, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.375, 'rewards/correctness_reward_func': 0.0, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': -0.0274999737739563, 'reward_std': 0.9480300545692444, 'completion_length': 374.25, 'kl': -8.106231689453125e-06, 'epoch': 0.0}
+ 80%|████████  | 8/10 [16:02<03:12, 96.15s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 1329.49, 'LogP': -2.81, 'Molecular Refractivity': 341.09, 'TPSA': 530.69, 'Hydrogen Bond_Donors': 19, 'Hydrogen_Bond Acceptors': 17, 'Rotatable Bonds': 31, 'Chiral Centers': 9, 'Heavy Atoms': 95, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2', 'Oxygen-nitrogen_single_bond']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 1269.43, 'LogP': -3.11, 'Molecular Refractivity': 328.54, 'TPSA': 495.89, 'Hydrogen Bond_Donors': 17, 'Hydrogen_Bond Acceptors': 16, 'Rotatable Bonds': 31, 'Chiral Centers': 9, 'Heavy Atoms': 91, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2', 'Oxygen-nitrogen_single_bond']}}, 2: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 1242.36, 'LogP': -4.09, 'Molecular Refractivity': 317.8, 'TPSA': 509.43, 'Hydrogen Bond_Donors': 18, 'Hydrogen_Bond Acceptors': 16, 'Rotatable Bonds': 31, 'Chiral Centers': 8, 'Heavy Atoms': 89, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}, 3: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 1382.55, 'LogP': -1.32, 'Molecular Refractivity': 364.38, 'TPSA': 509.43, 'Hydrogen Bond_Donors': 18, 'Hydrogen_Bond Acceptors': 16, 'Rotatable Bonds': 33, 'Chiral Centers': 9, 'Heavy Atoms': 100, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}, 4: { 'similarity score': 0.92, 'Rdkit information': {'Molecular Weight': 1182.31, 'LogP': -4.18, 'Molecular Refractivity': 304.49, 'TPSA': 472.13, 'Hydrogen Bond_Donors': 17, 'Hydrogen_Bond Acceptors': 15, 'Rotatable Bonds': 31, 'Chiral Centers': 8, 'Heavy Atoms': 85, 'Formal Charge': 0, 'Total Rings': 6, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}, 5: { 'similarity score': 0.91, 'Rdkit information': {'Molecular Weight': 1311.47, 'LogP': -2.09, 'Molecular Refractivity': 345.42, 'TPSA': 487.92, 'Hydrogen Bond_Donors': 18, 'Hydrogen_Bond Acceptors': 15, 'Rotatable Bonds': 33, 'Chiral Centers': 9, 'Heavy Atoms': 95, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 1225.38, 'LogP': -3.2, 'Molecular Refractivity': 319.11, 'TPSA': 475.71, 'Hydrogen Bond_Donors': 18, 'Hydrogen_Bond Acceptors': 15, 'Rotatable Bonds': 30, 'Chiral Centers': 10, 'Heavy Atoms': 88, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2', 'Oxygen-nitrogen_single_bond']}}, 2: { 'similarity score': 0.88, 'Rdkit information': {'Molecular Weight': 1443.63, 'LogP': -0.61, 'Molecular Refractivity': 377.99, 'TPSA': 521.46, 'Hydrogen Bond_Donors': 18, 'Hydrogen_Bond Acceptors': 18, 'Rotatable Bonds': 34, 'Chiral Centers': 9, 'Heavy Atoms': 104, 'Formal Charge': 0, 'Total Rings': 8, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}, 3: { 'similarity score': 0.87, 'Rdkit information': {'Molecular Weight': 1875.22, 'LogP': -5.86, 'Molecular Refractivity': 482.17, 'TPSA': 762.94, 'Hydrogen Bond_Donors': 28, 'Hydrogen_Bond Acceptors': 25, 'Rotatable Bonds': 36, 'Chiral Centers': 15, 'Heavy Atoms': 131, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['Aliphatic_long_chain', 'disulphide', 'imine_1', 'imine_2']}}, 4: { 'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 2013.29, 'LogP': -7.12, 'Molecular Refractivity': 510.83, 'TPSA': 829.18, 'Hydrogen Bond_Donors': 27, 'Hydrogen_Bond Acceptors': 27, 'Rotatable Bonds': 61, 'Chiral Centers': 20, 'Heavy Atoms': 143, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}, 5: { 'similarity score': 0.83, 'Rdkit information': {'Molecular Weight': 1619.88, 'LogP': -6.8, 'Molecular Refractivity': 414.15, 'TPSA': 686.13, 'Hydrogen Bond_Donors': 23, 'Hydrogen_Bond Acceptors': 21, 'Rotatable Bonds': 51, 'Chiral Centers': 12, 'Heavy Atoms': 114, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': ['Aliphatic_long_chain', 'imine_1', 'imine_2']}}}}
+            Answer:
+unapprovedResponse:
+<think>
+To determine the likelihood of compound X receiving regulatory approval, we need to analyze the similarity of its properties to those of approved and unapproved molecules.
+
+We can start by calculating the average similarity score of the approved molecules. This score is the sum of the similarity scores of the individual approved molecules divided by the number of approved molecules.
+
+Approved molecules' average similarity score = (0.95 + 0.93 + 0.93 + 0.92 + 0.91) / 5 = 0.936
+
+We can also calculate the average similarity score of the unapproved molecules.
+
+Unapproved molecules' average similarity score = (0.88 + 0.88 + 0.87 + 0.83 + 0.83) / 5 = 0.86
+
+The higher the similarity score of compound X to the approved molecules, the more likely it is to receive regulatory approval.
+
+Since compound X has a similarity score of 0.95 to one of the approved molecules (Molecular Weight: 1269.43, LogP: -3.11, Molecular Refractivity: 328.54, TPSA: 495.89, Hydrogen Bond_Donors: 17, Hydrogen_Bond Acceptors: 16, Rotatable Bonds: 31, Chiral Centers: 9, Heavy Atoms: 91, Formal Charge: 0, Total Rings: 6, Structural Alerts: ['Aliphatic_long_chain', 'imine_1', 'imine_2', 'Oxygen-nitrogen_single_bond']))
+
+this is an indication that compound X is likely to be approved.
+
+</think>
+<label>
+Approved
+</label>
+<score>
+0.95
+</score>Extracted:
+approvedScore:
+0.95
+
+
+
+
+
+
+ 90%|█████████ | 9/10 [17:14<01:28, 88.81s/it]                                              {'loss': -0.0, 'grad_norm': 0.19734184443950653, 'learning_rate': 5.848888922025553e-07, 'rewards/xmlcount_reward_func': -0.6367499828338623, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.375, 'rewards/correctness_reward_func': 0.0, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': -0.2617499828338623, 'reward_std': 0.8589906692504883, 'completion_length': 355.5, 'kl': -1.3232231140136719e-05, 'epoch': 0.0}
+ 90%|█████████ | 9/10 [17:14<01:28, 88.81s/it]--------------------
+Question:
+
+            I have developed a model that can predict the drug approval of compound X.
+            This model outputs two lists containting the properties of most similar approved and unapproved modelcules
+            Your task is to analyze the likelihood of compound X receiving regulatory approval based on its similarity to known molecules.
+
+            - RDKit Analysis of Compound X:
+            {'Molecular Weight': 314.47, 'LogP': 5.74, 'Molecular Refractivity': 95.26, 'TPSA': 29.46, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 2, 'Heavy Atoms': 23, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['Aliphatic_long_chain', 'isolated_alkene']}
+
+            Using the provided data:
+            {'most similar appoved drugs': {1: { 'similarity score': 0.96, 'Rdkit information': {'Molecular Weight': 372.55, 'LogP': 6.26, 'Molecular Refractivity': 109.69, 'TPSA': 46.53, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 6, 'Chiral Centers': 2, 'Heavy Atoms': 27, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['Aliphatic_long_chain']}}, 2: { 'similarity score': 0.96, 'Rdkit information': {'Molecular Weight': 372.55, 'LogP': 6.26, 'Molecular Refractivity': 109.69, 'TPSA': 46.53, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 6, 'Chiral Centers': 0, 'Heavy Atoms': 27, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['Aliphatic_long_chain']}}, 3: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 245.37, 'LogP': 3.11, 'Molecular Refractivity': 73.71, 'TPSA': 46.25, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 3, 'Heavy Atoms': 18, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}, 4: { 'similarity score': 0.95, 'Rdkit information': {'Molecular Weight': 327.47, 'LogP': 3.37, 'Molecular Refractivity': 94.23, 'TPSA': 43.70, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 3, 'Rotatable Bonds': 2, 'Chiral Centers': 3, 'Heavy Atoms': 24, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 370.33, 'LogP': 3.14, 'Molecular Refractivity': 95.3, 'TPSA': 43.97, 'Hydrogen Bond_Donors': 0, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 1, 'Chiral Centers': 3, 'Heavy Atoms': 22, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}}, 'most similar non appoved drugs': {1: { 'similarity score': 0.96, 'Rdkit information': {'Molecular Weight': 310.44, 'LogP': 5.73, 'Molecular Refractivity': 95.16, 'TPSA': 29.46, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 0, 'Heavy Atoms': 23, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['Aliphatic_long_chain']}}, 2: { 'similarity score': 0.94, 'Rdkit information': {'Molecular Weight': 313.83, 'LogP': 3.98, 'Molecular Refractivity': 89.84, 'TPSA': 23.47, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 0, 'Chiral Centers': 2, 'Heavy Atoms': 22, 'Formal Charge': 0, 'Total Rings': 4, 'Structural Alerts': 'None'}}, 3: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 364.49, 'LogP': 3.76, 'Molecular Refractivity': 100.67, 'TPSA': 41.93, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 4, 'Rotatable Bonds': 7, 'Chiral Centers': 3, 'Heavy Atoms': 26, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': ['Aliphatic_long_chain']}}, 4: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 378.49, 'LogP': 5.11, 'Molecular Refractivity': 109.87, 'TPSA': 28.26, 'Hydrogen Bond_Donors': 1, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 2, 'Chiral Centers': 0, 'Heavy Atoms': 28, 'Formal Charge': 0, 'Total Rings': 5, 'Structural Alerts': 'None'}}, 5: { 'similarity score': 0.93, 'Rdkit information': {'Molecular Weight': 287.36, 'LogP': 3.38, 'Molecular Refractivity': 81.55, 'TPSA': 62.32, 'Hydrogen Bond_Donors': 2, 'Hydrogen_Bond Acceptors': 2, 'Rotatable Bonds': 4, 'Chiral Centers': 1, 'Heavy Atoms': 21, 'Formal Charge': 0, 'Total Rings': 3, 'Structural Alerts': 'None'}}}}
+            Answer:
+approvedResponse:
+<think>
+To determine the likelihood of compound X receiving regulatory approval, we need to analyze its similarity to known approved and non-approved molecules. 
+
+We have two lists of most similar molecules:'most similar approved drugs' and'most similar non-approved drugs'. Each list contains up to 5 molecules, along with their similarity scores and RDKit information.
+
+Let's compare the properties of compound X with those of the similar molecules. We have:
+
+- Molecular Weight: 314.47
+- LogP: 5.74
+- Molecular Refractivity: 95.26
+- TPSA: 29.46
+- Hydrogen Bond_Donors: 1
+- Hydrogen_Bond Acceptors: 2
+- Rotatable Bonds: 4
+- Chiral Centers: 2
+- Heavy Atoms: 23
+- Formal Charge: 0
+- Total Rings: 3
+- Structural Alerts: ['Aliphatic_long_chain', 'isolated_alkene']
+
+Approved molecules with high similarity scores:
+1. Molecular Weight: 372.55, LogP: 6.26, Molecular Refractivity: 109.69, TPSA: 46.53, Rotatable Bonds: 6, Chiral Centers: 2
+2. Molecular Weight: 372.55, LogP: 6.26, Molecular Refractivity: 109.69, TPSA: 46.53, Rotatable Bonds: 6, Chiral Centers: 0
+3. Molecular Weight: 245.37, LogP: 3.11, Molecular Refractivity: 73.71, TPSA: 46.25, Rotatable Bonds: 0, Chiral Centers: 3
+4. Molecular Weight: 327.47, LogP: 3.37, Molecular Refractivity: 94.23, TPSA: 43.70, Rotatable Bonds: 2, Chiral Centers: 3
+5. Molecular Weight: 370.33, LogP: 3.14, Molecular Refractivity: 95.3, TPSA: 43.97, Rotatable Bonds: 1, Chiral Centers: 3
+
+Non-approved molecules with high similarity scores:
+1. Molecular Weight: 310.44, LogP: 5.73, Molecular Refractivity: 95.16, TPSA: 29.46, Rotatable Bonds: 4, Chiral Centers: 0
+2. Molecular Weight: 313.83, LogP: 3.98, Molecular Refractivity: 89.84, TPSA: 23.47, Rotatable Bonds: 0, Chiral Centers: 2
+3. Molecular Weight: 364.49, LogP: 3.76, Molecular Refractivity: 100.67, TPSA: 41.93, Rotatable Bonds: 7, Chiral Centers: 3
+4. Molecular Weight: 378.49, LogP: 5.11, Molecular Refractivity: 109.87, TPSA: 28.26, Rotatable Bonds: 2, Chiral Centers: 0
+5. Molecular Weight: 287.36, LogP: 3.38, Molecular Refractivity: 81.55, TPSA: 62.32, Rotatable Bonds: 4, Chiral Centers: 1
+
+Compound X has a molecular weight, logP, and refractivity similar to those of approved molecules. However, its TPSA and rotatable bonds are closer to those of non-approved molecules. There is no conclusive evidence to suggest that compound X would be approved or non-approved. However, if I had to make an educated guess, I would say that compound X has a slightly higher chance of being approved, due to its similarity in molecular weight, logP, and refractivity with approved molecules.
+
+I would assign a similarity score of 0.6, indicating a moderate level of similarity between compound X and approved molecules.
+
+</think>
+
+<label>
+Approved
+</label>
+
+<score>
+0.6
+</score>Extracted:
+approvedScore:
+0.6
+
+
+
+
+
+
+100%|██████████| 10/10 [19:36<00:00, 105.02s/it]                                                {'loss': -0.0, 'grad_norm': 0.13522715866565704, 'learning_rate': 1.507684480352292e-07, 'rewards/xmlcount_reward_func': -1.0747500658035278, 'rewards/soft_format_reward_func': 0.0, 'rewards/strict_format_reward_func': 0.0, 'rewards/int_reward_func': 0.5, 'rewards/correctness_reward_func': 3.0, 'rewards/int_score_reward_func': 0.0, 'rewards/confident_score_func': 0.0, 'reward': 2.4252500534057617, 'reward_std': 0.7099241018295288, 'completion_length': 496.0, 'kl': -5.900859832763672e-06, 'epoch': 0.0}
+100%|██████████| 10/10 [19:36<00:00, 105.02s/it]                                                {'train_runtime': 1179.3569, 'train_samples_per_second': 0.034, 'train_steps_per_second': 0.008, 'train_loss': -2.4791806936264037e-07, 'epoch': 0.0}
+100%|██████████| 10/10 [19:39<00:00, 105.02s/it]100%|██████████| 10/10 [19:39<00:00, 117.94s/it]
+[rank0]:[W414 03:04:12.586934687 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+#################################################
+Panthera Cluster
+Job 110560 for user 'u111169'
+Finished at: Mon Apr 14 03:04:15 +0330 2025
+Job details file : ~/JobSummary/110560.out
+================================================
