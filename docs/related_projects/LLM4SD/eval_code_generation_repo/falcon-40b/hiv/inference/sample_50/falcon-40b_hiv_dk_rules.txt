@@ -1,5 +1,0 @@
-def rule1_nitrogen_inhibitor(mol):
-    return len(mol.GetSubstructMatches(Chem.MolFromSmiles('N')))
-
-def rule2_carbonyl_noninhibitor(mol):
-    return len(mol.GetSubstructMatches(Chem.MolFromSmiles('C=O')))
