@@ -1,76 +1,0 @@
-INFO 04-14 03:12:36 [__init__.py:239] Automatically detected platform cuda.
-/home/u111169/mgh/grpo.py:6: UserWarning: WARNING: Unsloth should be imported before trl, transformers, peft to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
-
-Please restructure your imports with 'import unsloth' at the top of your file.
-  from unsloth import FastLanguageModel
-🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
-Unsloth: Failed to patch Gemma3ForConditionalGeneration.
-🦥 Unsloth Zoo will now patch everything to make training faster!
-/home/u111169/mgh/grpo.py:12: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-  df["labels"].replace({"<APPROVED>":"approved" , "<NOT APPROVED>":"unapproved"} , inplace=True)
-==((====))==  Unsloth 2025.3.19: Fast Llama patching. Transformers: 4.51.1. vLLM: 0.8.3.
-   \\   /|    Tesla V100-PCIE-32GB. Num GPUs = 1. Max memory: 31.739 GB. Platform: Linux.
-O^O/ \_/ \    Torch: 2.6.0+cu124. CUDA: 7.0. CUDA Toolkit: 12.4. Triton: 3.2.0
-\        /    Bfloat16 = FALSE. FA [Xformers = 0.0.29.post3. FA2 = False]
- "-____-"     Free license: http://github.com/unslothai/unsloth
-Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
-Unsloth: Your GPU does not support prefix caching - will disable!
-Unsloth: vLLM loading /home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659 with actual GPU utilization = 59.35%
-Unsloth: Your GPU has CUDA compute capability 7.0 with VRAM = 31.74 GB.
-Unsloth: Using conservativeness = 1.0. Chunked prefill tokens = 5000. Num Sequences = 160.
-Unsloth: vLLM's KV Cache can use up to 3.8 GB. Also swap space = 6 GB.
-WARNING 04-14 03:12:43 [config.py:2704] Casting torch.bfloat16 to torch.float16.
-INFO 04-14 03:12:50 [config.py:600] This model supports multiple tasks: {'embed', 'reward', 'classify', 'score', 'generate'}. Defaulting to 'generate'.
-WARNING 04-14 03:12:50 [arg_utils.py:1708] Compute Capability < 8.0 is not supported by the V1 Engine. Falling back to V0. 
-Unsloth: vLLM Bitsandbytes config using kwargs = {'load_in_8bit': False, 'load_in_4bit': True, 'bnb_4bit_compute_dtype': 'float16', 'bnb_4bit_quant_storage': 'uint8', 'bnb_4bit_quant_type': 'fp4', 'bnb_4bit_use_double_quant': False, 'llm_int8_enable_fp32_cpu_offload': False, 'llm_int8_has_fp16_weight': False, 'llm_int8_skip_modules': [], 'llm_int8_threshold': 6.0}
-INFO 04-14 03:12:50 [llm_engine.py:242] Initializing a V0 LLM engine (v0.8.3) with config: model='/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659', speculative_config=None, tokenizer='/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=5000, download_dir=None, load_format=LoadFormat.BITSANDBYTES, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=bitsandbytes, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda:0, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":0,"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":160}, use_cached_outputs=False, 
-/share/apps/eb/Python/3.11.5-GCCcore-13.2.0/envs/vllm/lib/python3.11/site-packages/vllm/executor/uniproc_executor.py:29: UserWarning: Failed to get the IP address, using 0.0.0.0 by default.The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
-  get_ip(), get_open_port())
-INFO 04-14 03:12:51 [cuda.py:240] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
-INFO 04-14 03:12:51 [cuda.py:289] Using XFormers backend.
-[W414 03:12:51.089033681 socket.cpp:204] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-[W414 03:12:51.089299308 socket.cpp:204] [c10d] The hostname of the client socket cannot be retrieved. err=-3
-INFO 04-14 03:12:51 [parallel_state.py:957] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
-INFO 04-14 03:12:51 [model_runner.py:1110] Starting to load model /home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659...
-INFO 04-14 03:12:51 [loader.py:1155] Loading weights with BitsAndBytes quantization. May take a while ...
-Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
-Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.74it/s]
-Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.04it/s]
-Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.68it/s]
-Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.58it/s]
-Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.74it/s]
-
-INFO 04-14 03:12:54 [punica_selector.py:18] Using PunicaWrapperGPU.
-INFO 04-14 03:12:54 [model_runner.py:1146] Model loading took 5.4442 GiB and 2.549271 seconds
-INFO 04-14 03:13:04 [worker.py:267] Memory profiling takes 9.93 seconds
-INFO 04-14 03:13:04 [worker.py:267] the current vLLM instance can use total_gpu_memory (31.74GiB) x gpu_memory_utilization (0.59) = 18.84GiB
-INFO 04-14 03:13:04 [worker.py:267] model weights take 5.44GiB; non_torch_memory takes 0.07GiB; PyTorch activation peak memory takes 0.77GiB; the rest of the memory reserved for KV Cache is 12.55GiB.
-INFO 04-14 03:13:04 [executor_base.py:112] # cuda blocks: 6426, # CPU blocks: 3072
-INFO 04-14 03:13:04 [executor_base.py:117] Maximum concurrency for 5000 tokens per request: 20.56x
-INFO 04-14 03:13:07 [model_runner.py:1456] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
-Capturing CUDA graph shapes:   0%|          | 0/23 [00:00<?, ?it/s]Capturing CUDA graph shapes:   4%|▍         | 1/23 [00:01<00:34,  1.58s/it]Capturing CUDA graph shapes:   9%|▊         | 2/23 [00:03<00:31,  1.50s/it]Capturing CUDA graph shapes:  13%|█▎        | 3/23 [00:04<00:29,  1.47s/it]Capturing CUDA graph shapes:  17%|█▋        | 4/23 [00:05<00:27,  1.46s/it]Capturing CUDA graph shapes:  22%|██▏       | 5/23 [00:07<00:25,  1.40s/it]Capturing CUDA graph shapes:  26%|██▌       | 6/23 [00:08<00:23,  1.38s/it]Capturing CUDA graph shapes:  30%|███       | 7/23 [00:09<00:21,  1.36s/it]Capturing CUDA graph shapes:  35%|███▍      | 8/23 [00:11<00:20,  1.34s/it]Capturing CUDA graph shapes:  39%|███▉      | 9/23 [00:12<00:18,  1.32s/it]Capturing CUDA graph shapes:  43%|████▎     | 10/23 [00:13<00:17,  1.31s/it]Capturing CUDA graph shapes:  48%|████▊     | 11/23 [00:15<00:15,  1.31s/it]Capturing CUDA graph shapes:  52%|█████▏    | 12/23 [00:16<00:14,  1.31s/it]Capturing CUDA graph shapes:  57%|█████▋    | 13/23 [00:17<00:12,  1.25s/it]Capturing CUDA graph shapes:  61%|██████    | 14/23 [00:18<00:10,  1.22s/it]Capturing CUDA graph shapes:  65%|██████▌   | 15/23 [00:19<00:09,  1.19s/it]Capturing CUDA graph shapes:  70%|██████▉   | 16/23 [00:20<00:08,  1.17s/it]Capturing CUDA graph shapes:  74%|███████▍  | 17/23 [00:21<00:06,  1.16s/it]Capturing CUDA graph shapes:  78%|███████▊  | 18/23 [00:23<00:05,  1.15s/it]Capturing CUDA graph shapes:  83%|████████▎ | 19/23 [00:24<00:04,  1.16s/it]Capturing CUDA graph shapes:  87%|████████▋ | 20/23 [00:25<00:03,  1.14s/it]Capturing CUDA graph shapes:  91%|█████████▏| 21/23 [00:26<00:02,  1.14s/it]Capturing CUDA graph shapes:  96%|█████████▌| 22/23 [00:27<00:01,  1.13s/it]Capturing CUDA graph shapes: 100%|██████████| 23/23 [00:28<00:00,  1.01s/it]Capturing CUDA graph shapes: 100%|██████████| 23/23 [00:28<00:00,  1.23s/it]
-INFO 04-14 03:13:35 [model_runner.py:1598] Graph capturing finished in 28 secs, took 3.07 GiB
-INFO 04-14 03:13:35 [llm_engine.py:448] init engine (profile, create kv cache, warmup model) took 41.39 seconds
-/home/u111169/wrkdir/mgh-project/models/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659 does not have a padding token! Will use pad_token = <|finetune_right_pad_id|>.
-Unsloth 2025.3.19 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
-Map:   0%|          | 0/2497 [00:00<?, ? examples/s]Map:  64%|██████▍   | 1597/2497 [00:00<00:00, 15892.38 examples/s]Map: 100%|██████████| 2497/2497 [00:00<00:00, 14888.22 examples/s]
-WARNING:accelerate.utils.other:Detected kernel version 5.3.18, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
-[rank0]: Traceback (most recent call last):
-[rank0]:   File "/home/u111169/mgh/grpo.py", line 216, in <module>
-[rank0]:     trainer = GRPOTrainer(
-[rank0]:               ^^^^^^^^^^^^
-[rank0]:   File "/share/apps/eb/Python/3.11.5-GCCcore-13.2.0/envs/vllm/lib/python3.11/site-packages/trl/trainer/grpo_trainer.py", line 346, in __init__
-[rank0]:     raise ValueError(
-[rank0]: ValueError: The global train batch size (1 x 1) must be evenly divisible by the number of generations per prompt (4). Given the current train batch size, the valid values for the number of generations are: [].
-[rank0]:[W414 03:13:43.629190041 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
-#################################################
-Panthera Cluster
-Job 110562 for user 'u111169'
-Finished at: Mon Apr 14 03:13:45 +0330 2025
-Job details file : ~/JobSummary/110562.out
-================================================
