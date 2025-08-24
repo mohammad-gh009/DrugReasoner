@@ -92,10 +92,10 @@ SMILES,Label
 python inference.py \
     --smiles "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O" "CC1=CC=C(C=C1)C(=O)O" \
     --output results.csv \
-    --top-k 20 \
-    --top-p 0.95 \
+    --top-k 9 \
+    --top-p 0.9 \
     --max-length 2048 \
-    --temperature 0.7
+    --temperature 1.0
 ```
 
 #### Python API Usage
