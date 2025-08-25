@@ -14,7 +14,7 @@ dataset = load_dataset(
 )
 
 train_df = dataset["train"].to_pandas()
-df_embed = embed_smiles(train_df["SMILES"].tolist())
+df_embed = embed_smiles(train_df["smiles"].tolist())
 
 
 class DrugReasoner:
@@ -106,7 +106,7 @@ Respond in the following format:
         
         # Calculate RDKit properties
         print("Calculating RDKit properties...")
-        df_input["rdkit"] = df_input["SMILES"].apply(
+        df_input["rdkit"] = df_input["smiles"].apply(
             lambda x: str(get_molecule_properties(x))
         )
         
