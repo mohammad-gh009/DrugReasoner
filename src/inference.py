@@ -112,10 +112,10 @@ Respond in the following format:
         
         # Find most similar approved molecules
         print("Finding similar approved molecules...")
-        df_input["most_app"] = df_input["SMILES"].apply(
+        df_input["most_app"] = df_input["smiles"].apply(
             lambda x: str(get_most_one(
                 find_similar_molecules_val(
-                    boosted_model, df_embed, train_df["Label"], embed_smiles([x])
+                    boosted_model, df_embed, train_df["label"], embed_smiles([x])
                 ),train_df, 
                 idx="approved_neighbors",
             ))
@@ -123,10 +123,10 @@ Respond in the following format:
         
         # Find most similar unapproved molecules
         print("Finding similar unapproved molecules...")
-        df_input["most_nonapp"] = df_input["SMILES"].apply(
+        df_input["most_nonapp"] = df_input["smiles"].apply(
             lambda x: str(get_most_one(
                 find_similar_molecules_val(
-                    boosted_model, df_embed, train_df["Label"], embed_smiles([x])
+                    boosted_model, df_embed, train_df["label"], embed_smiles([x])
                 ),train_df, 
                 idx="unapproved_neighbors",
             ))
@@ -152,15 +152,15 @@ Respond in the following format:
                     {
                         "role": "user",
                         "content": f"""
-                Compound's RDKit Properties:{x["rdkit"]} 
+                Compound's RDKit Properties:{x["molecular_features"]} 
 
-                Five Most Similar Approved Compounds (RDKit): {x['most_app']} 
+                Five Most Similar Approved Compounds (RDKit): {x['most_similar_approved']} 
                 
-                Five Most Similar Unapproved Compounds (RDKit): {x['most_nonapp']}
+                Five Most Similar Unapproved Compounds (RDKit): {x['most_similar_unapproved']}
                 """,
                     },
                 ],
-                "SMILES": x["SMILES"],
+                "SMILES": x["smiles"],
             }
         )
         return data
@@ -243,9 +243,9 @@ Respond in the following format:
             "thinking": think,
             "prediction": labels,
             "confidence_score": scores,
-            "rdkit_properties": df["rdkit"].tolist(),
-            "similar_approved": df["most_app"].tolist(),
-            "similar_unapproved": df["most_nonapp"].tolist(),
+            "rdkit_properties": df["molecular_features"].tolist(),
+            "similar_approved": df["most_similar_approved"].tolist(),
+            "similar_unapproved": df["most_similar_unapproved"].tolist(),
         })
         
         # Print results if requested
