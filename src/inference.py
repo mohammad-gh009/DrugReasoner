@@ -131,7 +131,7 @@ Respond in the following format:
         """
         print(f"Processing {len(smiles_list)} molecules...")
         
-        df_input = pd.DataFrame({"SMILES": smiles_list})
+        df_input = pd.DataFrame({"smiles": smiles_list})
         
         # Calculate RDKit properties
         print("Calculating RDKit properties...")

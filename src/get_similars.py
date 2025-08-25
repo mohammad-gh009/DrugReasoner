@@ -174,13 +174,13 @@ def find_similar_molecules_leaf(model, X, labels):
     return results
 
 
-def get_most(similarity_results, idx=["approved_neighbors", "unapproved_neighbors"]):
+def get_most(similarity_results,train_df,  idx=["approved_neighbors", "unapproved_neighbors"]):
     most_app = []
     for count in range(len(similarity_results)):
         most_app_inner = []
         for i in similarity_results[count][f"{idx}"]:
             most_app_inner.append(
-                get_molecule_properties(train_df.loc[i]["SMILES"])
+                get_molecule_properties(train_df.loc[i]["smiles"])
             )
         most_app.append(str(most_app_inner))
     return most_app
@@ -246,5 +246,5 @@ def find_similar_molecules_val(model, X, labels, Z):
 def get_most_one(val_one,train_df, idx=["approved_neighbors", "unapproved_neighbors"]):
     most = []
     for i in val_one[f"{idx}"]:
-        most.append(get_molecule_properties(train_df.loc[i]["SMILES"]))
+        most.append(get_molecule_properties(train_df.loc[i]["smiles"]))
     return most
