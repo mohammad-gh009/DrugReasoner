@@ -28,6 +28,7 @@ class DrugReasoner:
         self.peft_model = peft_model
         self.tokenizer = None
         self.model = None
+        self._model_loaded = False  # Track if model is loaded
         self.system_prompt = """
 You are a chemist specializing in drug discovery and molecular modeling. Your role is to evaluate the drug-likeness and viability of a given chemical compound as a potential drug candidate, using computational descriptors derived from RDKit.
 
@@ -68,8 +69,17 @@ Respond in the following format:
             "top_k": 9,
         }
         
-    def load_model(self):
-        """Load the tokenizer and model."""
+    def load_model(self, force_reload=False):
+        """
+        Load the tokenizer and model.
+        
+        Args:
+            force_reload (bool): If True, force reload even if model is already loaded
+        """
+        if self._model_loaded and not force_reload:
+            print("Model is already loaded. Skipping model loading.")
+            return
+            
         print("Loading tokenizer and model...")
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         
@@ -88,7 +98,26 @@ Respond in the following format:
         
         self.model = PeftModel.from_pretrained(base_model, self.peft_model).to("cuda")
         self.default_generation_args["pad_token_id"] = self.tokenizer.eos_token_id
+        self._model_loaded = True
         print("Model loaded successfully!")
+        
+    def is_model_loaded(self):
+        """Check if model is loaded."""
+        return self._model_loaded and self.model is not None and self.tokenizer is not None
+        
+    def unload_model(self):
+        """Unload the model to free memory."""
+        if self._model_loaded:
+            print("Unloading model...")
+            del self.model
+            del self.tokenizer
+            self.model = None
+            self.tokenizer = None
+            self._model_loaded = False
+            torch.cuda.empty_cache()  # Clear GPU cache
+            print("Model unloaded successfully!")
+        else:
+            print("Model is not loaded.")
         
     def prepare_molecule_data(self, smiles_list):
         """
@@ -189,7 +218,8 @@ Respond in the following format:
         Returns:
             pd.DataFrame: Results DataFrame with predictions
         """
-        if self.model is None:
+        # Only load model if not already loaded
+        if not self.is_model_loaded():
             self.load_model()
         
         # Set up generation arguments with provided parameters
@@ -337,33 +367,46 @@ def main():
     return out_df
 
 
-# Example usage function
+# Example usage function - demonstrating model reuse
 def example_usage():
     """
-    Example of how to use the DrugDiscoveryPredictor class.
+    Example of how to use the DrugReasoner class with model reuse.
     """
     # Example SMILES strings (replace with your actual molecules)
-    example_smiles = [
+    batch1_smiles = [
         "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",  # Ibuprofen
         "CC1=CC=C(C=C1)C(=O)O",           # p-Toluic acid
-        "C1=CC=C(C=C1)C(=O)O"             # Benzoic acid
+    ]
+    
+    batch2_smiles = [
+        "C1=CC=C(C=C1)C(=O)O",            # Benzoic acid
+        "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"   # Caffeine
     ]
     
     # Initialize predictor
     predictor = DrugReasoner()
     
-    # Make predictions
-    results = predictor.predict_molecules(
-        smiles_list=example_smiles,
-        save_path="example_results.csv",
-        print_results=True,
-        top_k=9,
-        top_p=0.9,
-        max_length=2048,
-        temperature=1
+    print("Processing first batch...")
+    results1 = predictor.predict_molecules(
+        smiles_list=batch1_smiles,
+        save_path="batch1_results.csv",
+        print_results=True
     )
     
-    return results
+    print("\nProcessing second batch (model should already be loaded)...")
+    results2 = predictor.predict_molecules(
+        smiles_list=batch2_smiles,
+        save_path="batch2_results.csv",
+        print_results=True
+    )
+    
+    # Check if model is loaded
+    print(f"\nIs model loaded? {predictor.is_model_loaded()}")
+    
+    # Optionally unload model to free memory
+    # predictor.unload_model()
+    
+    return results1, results2
 
 
 if __name__ == "__main__":
