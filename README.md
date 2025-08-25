@@ -1,6 +1,5 @@
-# DrugReasoner 🧪💊
+# DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model
 ---
-
 
 [Logo]()
 
@@ -8,14 +7,12 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-yellow)](https://huggingface.co/datasets/Moreza009/drug_approval_all_classes)
 
-**DrugReasoner** is an AI-powered system that predicts drug approval outcomes using Large Language Models (LLMs) and molecular structure analysis. By combining advanced machine learning with interpretable reasoning, DrugReasoner helps accelerate pharmaceutical research and development.
+**DrugReasoner** is an AI-powered system for predicting drug approval outcomes using reasoning-augmented Large Language Models (LLMs) and molecular feature analysis. By combining advanced machine learning with interpretable reasoning, DrugReasoner provides transparent predictions that can accelerate pharmaceutical research and development.
 
 ## 📖 Abstract
-
 Drug discovery is a complex and resource-intensive process, making early prediction of approval outcomes critical for optimizing research investments. While classical machine learning and deep learning methods have shown promise in drug approval prediction, their limited interpretability constraints their impact. Here, we present DrugReasoner, a reasoning-based large language model (LLM) built on the LLaMA architecture and fine-tuned with group relative policy optimization (GRPO) to predict the likelihood of small-molecule approval. DrugReasoner integrates molecular descriptors with comparative reasoning against structurally similar approved and unapproved compounds, generating predictions alongside step-by-step rationales and confidence scores. DrugReasoner achieved robust performance with an AUC of 0.732 and an F1 score of 0.729 on the validation set and 0.725 and 0.718 on the test set, respectively. These results outperformed conventional baselines, including logistic regression, support vector machine, and k-nearest neighbors and had competitive performance relative to XGBoost. On an external independent dataset, DrugReasoner outperformed both baseline and the recently developed ChemAP model, achieving an AUC of 0.728 and an F1-score of 0.774, while maintaining high precision and balanced sensitivity, demonstrating robustness in real-world scenarios. These findings demonstrate that DrugReasoner not only delivers competitive predictive accuracy but also enhances transparency through its reasoning outputs, thereby addressing a key bottleneck in AI-assisted drug discovery. This study highlights the potential of reasoning-augmented LLMs as interpretable and effective tools for pharmaceutical decision-making.
 
-
-![Figure_1](properties/Figure_1.png "General Flow of Training")
+![Figure 1.pdf](https://github.com/user-attachments/files/21957023/Figure.1.pdf "Schematic representation of DrugReasoner development and assessment")
 
 ## ✨ Key Features
 
@@ -92,10 +89,10 @@ SMILES,Label
 python inference.py \
     --smiles "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O" "CC1=CC=C(C=C1)C(=O)O" \
     --output results.csv \
-    --top-k 20 \
-    --top-p 0.95 \
+    --top-k 9 \
+    --top-p 0.9 \
     --max-length 2048 \
-    --temperature 0.7
+    --temperature 1.0
 ```
 
 #### Python API Usage
@@ -137,7 +134,9 @@ DrugReasoner demonstrates superior performance compared to traditional baseline 
 
 If you use DrugReasoner in your research, please cite our work:
 
-```bibtex
+```
+Ghaffarzadeh-Esfahani, M., Motahharynia, A*., Yousefian, N., Mazrouei, N., Ghaisari, J., & Gheisari, Y. 
+DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model.
 
 ```
 
