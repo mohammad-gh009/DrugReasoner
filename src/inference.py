@@ -23,7 +23,7 @@ class DrugReasoner:
     """
     
     def __init__(self, model_name="meta-llama/Llama-3.1-8B" ,#
-                 peft_model="meta-llama/Llama-3.1-8B" ):#
+                 peft_model="Moreza009/Llama-DrugReasoner" ):#
         self.model_name = model_name
         self.peft_model = peft_model
         self.tokenizer = None
