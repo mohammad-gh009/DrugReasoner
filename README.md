@@ -40,14 +40,14 @@
 
    **Windows:**
    ```bash
-   cd\src
+   cd src
    python -m venv myenv
    myenv\Scripts\activate
    ```
 
    **Mac/Linux:**
    ```bash
-   cd/src
+   cd src
    python -m venv myenv
    source myenv/bin/activate
    ```
