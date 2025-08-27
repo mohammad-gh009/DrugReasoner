@@ -6,11 +6,8 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-yellow)](https://huggingface.co/datasets/Moreza009/drug_approval_all_classes)
-
+[![arXiv](https://img.shields.io/badge/arXiv-1234.5678-b31b1b.svg)](https://arxiv.org/abs/2508.18579)
 **DrugReasoner** is an AI-powered system for predicting drug approval outcomes using reasoning-augmented Large Language Models (LLMs) and molecular feature analysis. By combining advanced machine learning with interpretable reasoning, DrugReasoner provides transparent predictions that can accelerate pharmaceutical research and development.
-
-## 📖 Abstract
-Drug discovery is a complex and resource-intensive process, making early prediction of approval outcomes critical for optimizing research investments. While classical machine learning and deep learning methods have shown promise in drug approval prediction, their limited interpretability constraints their impact. Here, we present DrugReasoner, a reasoning-based large language model (LLM) built on the LLaMA architecture and fine-tuned with group relative policy optimization (GRPO) to predict the likelihood of small-molecule approval. DrugReasoner integrates molecular descriptors with comparative reasoning against structurally similar approved and unapproved compounds, generating predictions alongside step-by-step rationales and confidence scores. DrugReasoner achieved robust performance with an AUC of 0.732 and an F1 score of 0.729 on the validation set and 0.725 and 0.718 on the test set, respectively. These results outperformed conventional baselines, including logistic regression, support vector machine, and k-nearest neighbors and had competitive performance relative to XGBoost. On an external independent dataset, DrugReasoner outperformed both baseline and the recently developed ChemAP model, achieving an AUC of 0.728 and an F1-score of 0.774, while maintaining high precision and balanced sensitivity, demonstrating robustness in real-world scenarios. These findings demonstrate that DrugReasoner not only delivers competitive predictive accuracy but also enhances transparency through its reasoning outputs, thereby addressing a key bottleneck in AI-assisted drug discovery. This study highlights the potential of reasoning-augmented LLMs as interpretable and effective tools for pharmaceutical decision-making.
 
 ![Figure 1.pdf](/properties/Figure_1.png "Schematic representation of DrugReasoner development and assessment")
 
@@ -21,7 +18,6 @@ Drug discovery is a complex and resource-intensive process, making early predict
 - **🔍 Interpretable Results**: Clear reasoning behind predictions for better decision-making
 - **📊 Similarity Analysis**: Identifies similar approved/non-approved compounds for context
 - **⚡ Flexible Inference**: Support for both single molecule and batch predictions
-- **🎯 Baseline Comparisons**: Includes multiple baseline models (XGBoost, KNN, SVM, Logistic Regression)
 
 ## 🛠️ Installation
 -  To use **DrugReasoner**, you must first request access to the base model [Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) on Hugging Face by providing your contact information. Once access is granted, you can run DrugReasoner either through the command-line interface (CLI) or integrate it directly into your Python workflows.
@@ -44,12 +40,14 @@ Drug discovery is a complex and resource-intensive process, making early predict
 
    **Windows:**
    ```bash
+   cd\src
    python -m venv myenv
    myenv\Scripts\activate
    ```
 
    **Mac/Linux:**
    ```bash
+   cd/src
    python -m venv myenv
    source myenv/bin/activate
    ```
@@ -59,31 +57,11 @@ Drug discovery is a complex and resource-intensive process, making early predict
    pip install -r requirements.txt
    ```
 
-## 🚀 Quick Start
+## 🚀 How to use
 
 
 **Note:** GPU is required for inference. If unavailable, use our [Colab Notebook]([link-to-colab](https://colab.research.google.com/drive/16OKB5q7MZ6MhWv5Q1I0QByN6DSkqx6az?usp=sharing)).
 
-#### Batch Inference
-
-**Data Requirements:**
-- Place your dataset in the `datasets/` folder
-- Ensure your CSV file contains column named `smiles`
-- SMILES column should contain molecular structure strings
-- Label column should contain the ground truth labels (if available)
-
-```bash
-cd DrugReasoner/src
-python batch_inference.py --input ../datasets/test_processed.csv --output ../outputs/results.csv
-```
-
-**Example dataset format:**
-```csv
-smiles
-"CC(C)CC1=CC=C(C=C1)C(C)C(=O)O"
-"CC1=CC=C(C=C1)C(=O)O"
-"CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)CF3"
-```
 
 #### CLI Inference
 ```bash
@@ -113,13 +91,14 @@ results = predictor.predict_molecules(
 )
 ```
 
-## 📊 Datasets
+## 📊 Dataset & Model
 
-- **Processed Data**: [drug_approval_prediction](https://huggingface.co/datasets/Moreza009/drug_approval_prediction)
+- **Dataset**: [![Hugging Face Dataset](https://img.shields.io/badge/🤗%20Dataset-drug_approval_prediction-yellow)](https://huggingface.co/datasets/Moreza009/drug_approval_prediction)
+- **Model**: [![Hugging Face Model](https://img.shields.io/badge/🤗%20Model-Llama--DrugReasoner-orange)](https://huggingface.co/Moreza009/Llama-DrugReasoner)
 
 ## 📈 Performance
 
-DrugReasoner demonstrates superior performance compared to traditional baseline models across multiple evaluation metrics. Detailed performance comparisons are available in our [paper]().
+DrugReasoner demonstrates superior performance compared to traditional baseline models across multiple evaluation metrics. Detailed performance comparisons are available in our [paper](https://arxiv.org/abs/2508.18579).
 
 
 ## 📝 Citation
@@ -146,5 +125,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 ---
 
 <div align="center">
-  <strong>"Accelerating drug discovery through AI-powered predictions"</strong>
-  <br>
+  <strong>Accelerating drug discovery through AI-powered predictions</strong>
+  <br><br>
+</div>
