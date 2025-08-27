@@ -12,7 +12,7 @@
 ## 📖 Abstract
 Drug discovery is a complex and resource-intensive process, making early prediction of approval outcomes critical for optimizing research investments. While classical machine learning and deep learning methods have shown promise in drug approval prediction, their limited interpretability constraints their impact. Here, we present DrugReasoner, a reasoning-based large language model (LLM) built on the LLaMA architecture and fine-tuned with group relative policy optimization (GRPO) to predict the likelihood of small-molecule approval. DrugReasoner integrates molecular descriptors with comparative reasoning against structurally similar approved and unapproved compounds, generating predictions alongside step-by-step rationales and confidence scores. DrugReasoner achieved robust performance with an AUC of 0.732 and an F1 score of 0.729 on the validation set and 0.725 and 0.718 on the test set, respectively. These results outperformed conventional baselines, including logistic regression, support vector machine, and k-nearest neighbors and had competitive performance relative to XGBoost. On an external independent dataset, DrugReasoner outperformed both baseline and the recently developed ChemAP model, achieving an AUC of 0.728 and an F1-score of 0.774, while maintaining high precision and balanced sensitivity, demonstrating robustness in real-world scenarios. These findings demonstrate that DrugReasoner not only delivers competitive predictive accuracy but also enhances transparency through its reasoning outputs, thereby addressing a key bottleneck in AI-assisted drug discovery. This study highlights the potential of reasoning-augmented LLMs as interpretable and effective tools for pharmaceutical decision-making.
 
-![Figure 1.pdf](/properties/Figure_1.pdf "Schematic representation of DrugReasoner development and assessment")
+![Figure 1.pdf](/properties/Figure_1.png "Schematic representation of DrugReasoner development and assessment")
 
 ## ✨ Key Features
 
@@ -136,8 +136,15 @@ DrugReasoner demonstrates superior performance compared to traditional baseline 
 If you use DrugReasoner in your research, please cite our work:
 
 ```
-Ghaffarzadeh-Esfahani, M., Motahharynia, A*., Yousefian, N., Mazrouei, N., Ghaisari, J., & Gheisari, Y. 
-DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model.
+@misc{ghaffarzadehesfahani2025drugreasonerinterpretabledrugapproval,
+      title={DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model}, 
+      author={Mohammadreza Ghaffarzadeh-Esfahani and Ali Motahharynia and Nahid Yousefian and Navid Mazrouei and Jafar Ghaisari and Yousof Gheisari},
+      year={2025},
+      eprint={2508.18579},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2508.18579}, 
+}
 
 ```
 
