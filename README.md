@@ -68,7 +68,7 @@ Drug discovery is a complex and resource-intensive process, making early predict
 
 **Data Requirements:**
 - Place your dataset in the `datasets/` folder
-- Ensure your CSV file contains column named `smiles` (and `label` if available)
+- Ensure your CSV file contains column named `smiles`
 - SMILES column should contain molecular structure strings
 - Label column should contain the ground truth labels (if available)
 
@@ -145,7 +145,6 @@ If you use DrugReasoner in your research, please cite our work:
       primaryClass={cs.LG},
       url={https://arxiv.org/abs/2508.18579}, 
 }
-
 ```
 
 ## 📜 License
