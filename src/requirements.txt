@@ -18,5 +18,5 @@ transformers==4.51.1
 trl==0.15.2
 unsloth==2025.3.19
 unsloth_zoo==2025.3.17
-vllm == 0.8.3
+vllm == 0.10.1.1
 xgboost==3.0.2
