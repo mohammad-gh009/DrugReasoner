@@ -12,7 +12,7 @@
 ## 📖 Abstract
 Drug discovery is a complex and resource-intensive process, making early prediction of approval outcomes critical for optimizing research investments. While classical machine learning and deep learning methods have shown promise in drug approval prediction, their limited interpretability constraints their impact. Here, we present DrugReasoner, a reasoning-based large language model (LLM) built on the LLaMA architecture and fine-tuned with group relative policy optimization (GRPO) to predict the likelihood of small-molecule approval. DrugReasoner integrates molecular descriptors with comparative reasoning against structurally similar approved and unapproved compounds, generating predictions alongside step-by-step rationales and confidence scores. DrugReasoner achieved robust performance with an AUC of 0.732 and an F1 score of 0.729 on the validation set and 0.725 and 0.718 on the test set, respectively. These results outperformed conventional baselines, including logistic regression, support vector machine, and k-nearest neighbors and had competitive performance relative to XGBoost. On an external independent dataset, DrugReasoner outperformed both baseline and the recently developed ChemAP model, achieving an AUC of 0.728 and an F1-score of 0.774, while maintaining high precision and balanced sensitivity, demonstrating robustness in real-world scenarios. These findings demonstrate that DrugReasoner not only delivers competitive predictive accuracy but also enhances transparency through its reasoning outputs, thereby addressing a key bottleneck in AI-assisted drug discovery. This study highlights the potential of reasoning-augmented LLMs as interpretable and effective tools for pharmaceutical decision-making.
 
-![Figure 1.pdf](https://github.com/user-attachments/files/21957023/Figure.1.pdf "Schematic representation of DrugReasoner development and assessment")
+![Figure 1.pdf](/properties/Figure_1.pdf "Schematic representation of DrugReasoner development and assessment")
 
 ## ✨ Key Features
 
@@ -68,7 +68,7 @@ Drug discovery is a complex and resource-intensive process, making early predict
 
 **Data Requirements:**
 - Place your dataset in the `datasets/` folder
-- Ensure your CSV file contains columns named `SMILES` and `Label`
+- Ensure your CSV file contains column named `smiles` (and `label` if available)
 - SMILES column should contain molecular structure strings
 - Label column should contain the ground truth labels (if available)
 
@@ -79,7 +79,7 @@ python batch_inference.py --input ../datasets/test_processed.csv --output ../out
 
 **Example dataset format:**
 ```csv
-SMILES,Label
+smiles,label
 "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",1
 "CC1=CC=C(C=C1)C(=O)O",0
 "CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)CF3",1

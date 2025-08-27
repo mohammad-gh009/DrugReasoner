@@ -16,7 +16,7 @@ dataset = load_dataset(
 train_df = dataset["train"].to_pandas()
 df_embed = embed_smiles(train_df["smiles"].tolist())
 
-
+device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 class DrugReasoner:
     """
     A class to handle drug discovery predictions using a fine-tuned Llama model.
@@ -96,7 +96,7 @@ Respond in the following format:
             device_map="auto"
         )
         
-        self.model = PeftModel.from_pretrained(base_model, self.peft_model).to("cuda")
+        self.model = PeftModel.from_pretrained(base_model, self.peft_model).to(device)
         self.default_generation_args["pad_token_id"] = self.tokenizer.eos_token_id
         self._model_loaded = True
         print("Model loaded successfully!")
@@ -105,19 +105,32 @@ Respond in the following format:
         """Check if model is loaded."""
         return self._model_loaded and self.model is not None and self.tokenizer is not None
         
-    def unload_model(self):
-        """Unload the model to free memory."""
-        if self._model_loaded:
-            print("Unloading model...")
-            del self.model
-            del self.tokenizer
-            self.model = None
-            self.tokenizer = None
-            self._model_loaded = False
-            torch.cuda.empty_cache()  # Clear GPU cache
-            print("Model unloaded successfully!")
+def unload_model(self):
+    """Unload the model to free memory."""
+    if self._model_loaded:
+        print("Unloading model...")
+        del self.model
+        del self.tokenizer
+        self.model = None
+        self.tokenizer = None
+        self._model_loaded = False
+        
+        # Clear device-specific cache
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()  # Clear CUDA GPU cache
+            print("CUDA cache cleared")
+        elif torch.backends.mps.is_available():
+            torch.mps.empty_cache()  # Clear MPS cache
+            print("MPS cache cleared")
         else:
-            print("Model is not loaded.")
+            # CPU doesn't have a cache to clear, but we can trigger garbage collection
+            import gc
+            gc.collect()
+            print("Garbage collection performed")
+            
+        print("Model unloaded successfully!")
+    else:
+        print("Model is not loaded.")
         
     def prepare_molecule_data(self, smiles_list):
         """
@@ -250,7 +263,7 @@ Respond in the following format:
                 dataset["prompt"][i], 
                 return_tensors="pt", 
                 add_generation_prompt=True
-            ).to("cuda")
+            ).to(device)
             
             outputs = self.model.generate(inputs, **generation_args)
             input_length = inputs.shape[1]
