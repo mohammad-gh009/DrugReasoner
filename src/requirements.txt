@@ -12,7 +12,7 @@ safetensors==0.5.3
 scipy==1.15.2
 seaborn==0.13.2
 tokenizers==0.21.1
-torch == 2.6.0
+torch == 2.8.0
 tqdm==4.67.1
 transformers==4.51.1
 trl==0.15.2
