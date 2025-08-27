@@ -79,13 +79,13 @@ python batch_inference.py --input ../datasets/test_processed.csv --output ../out
 
 **Example dataset format:**
 ```csv
-smiles,label
-"CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",1
-"CC1=CC=C(C=C1)C(=O)O",0
-"CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)CF3",1
+smiles
+"CC(C)CC1=CC=C(C=C1)C(C)C(=O)O"
+"CC1=CC=C(C=C1)C(=O)O"
+"CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)CF3"
 ```
 
-#### Single Molecule Inference
+#### CLI Inference
 ```bash
 python inference.py \
     --smiles "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O" "CC1=CC=C(C=C1)C(=O)O" \
