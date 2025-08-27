@@ -113,15 +113,6 @@ results = predictor.predict_molecules(
 )
 ```
 
-
-#### Performance Evaluation
-
-Evaluate model performance using a CSV file with `y_pred` and `y_true` columns:
-
-```bash
-python utils.py --evaluate "path_to_results.csv"
-```
-
 ## 📊 Datasets
 
 - **Processed Data**: [drug_approval_prediction](https://huggingface.co/datasets/Moreza009/drug_approval_prediction)
