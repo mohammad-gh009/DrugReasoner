@@ -24,6 +24,7 @@ Drug discovery is a complex and resource-intensive process, making early predict
 - **🎯 Baseline Comparisons**: Includes multiple baseline models (XGBoost, KNN, SVM, Logistic Regression)
 
 ## 🛠️ Installation
+-  To use **DrugReasoner**, you must first request access to the base model [Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) on Hugging Face by providing your contact information. Once access is granted, you can run DrugReasoner either through the command-line interface (CLI) or integrate it directly into your Python workflows.
 
 ### Prerequisites
 
