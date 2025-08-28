@@ -109,7 +109,7 @@ If you use DrugReasoner in your research, please cite our work:
 ```
 @misc{ghaffarzadehesfahani2025drugreasonerinterpretabledrugapproval,
       title={DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model}, 
-      author={Mohammadreza Ghaffarzadeh-Esfahani and Ali Motahharynia and Nahid Yousefian and Navid Mazrouei and Jafar Ghaisari and Yousof Gheisari},
+      author={Mohammadreza Ghaffarzadeh-Esfahani and Ali Motahharynia* and Nahid Yousefian and Navid Mazrouei and Jafar Ghaisari and Yousof Gheisari},
       year={2025},
       eprint={2508.18579},
       archivePrefix={arXiv},
