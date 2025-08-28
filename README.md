@@ -33,7 +33,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone git@github.com:mohammad-gh009/DrugReasoner.git
+   git clone https://github.com/mohammad-gh009/DrugReasoner.git
    cd DrugReasoner
    ```
 
