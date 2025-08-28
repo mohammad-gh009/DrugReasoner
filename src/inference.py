@@ -1,7 +1,7 @@
 import argparse
 import torch
 import pandas as pd
-from datasets import Dataset , load_dataset
+from datasets import Dataset, load_dataset
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from get_similars import *
@@ -17,13 +17,14 @@ train_df = dataset["train"].to_pandas()
 df_embed = embed_smiles(train_df["smiles"].tolist())
 
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+
 class DrugReasoner:
     """
     A class to handle drug discovery predictions using a fine-tuned Llama model.
     """
     
-    def __init__(self, model_name="meta-llama/Llama-3.1-8B" ,#
-                 peft_model="Moreza009/Llama-DrugReasoner" ):#
+    def __init__(self, model_name="meta-llama/Llama-3.1-8B",
+                 peft_model="Moreza009/Llama-DrugReasoner"):
         self.model_name = model_name
         self.peft_model = peft_model
         self.tokenizer = None
@@ -105,33 +106,33 @@ Respond in the following format:
         """Check if model is loaded."""
         return self._model_loaded and self.model is not None and self.tokenizer is not None
         
-def unload_model(self):
-    """Unload the model to free memory."""
-    if self._model_loaded:
-        print("Unloading model...")
-        del self.model
-        del self.tokenizer
-        self.model = None
-        self.tokenizer = None
-        self._model_loaded = False
-        
-        # Clear device-specific cache
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()  # Clear CUDA GPU cache
-            print("CUDA cache cleared")
-        elif torch.backends.mps.is_available():
-            torch.mps.empty_cache()  # Clear MPS cache
-            print("MPS cache cleared")
-        else:
-            # CPU doesn't have a cache to clear, but we can trigger garbage collection
-            import gc
-            gc.collect()
-            print("Garbage collection performed")
+    def unload_model(self):
+        """Unload the model to free memory."""
+        if self._model_loaded:
+            print("Unloading model...")
+            del self.model
+            del self.tokenizer
+            self.model = None
+            self.tokenizer = None
+            self._model_loaded = False
             
-        print("Model unloaded successfully!")
-    else:
-        print("Model is not loaded.")
-        
+            # Clear device-specific cache
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()  # Clear CUDA GPU cache
+                print("CUDA cache cleared")
+            elif torch.backends.mps.is_available():
+                torch.mps.empty_cache()  # Clear MPS cache
+                print("MPS cache cleared")
+            else:
+                # CPU doesn't have a cache to clear, but we can trigger garbage collection
+                import gc
+                gc.collect()
+                print("Garbage collection performed")
+                
+            print("Model unloaded successfully!")
+        else:
+            print("Model is not loaded.")
+            
     def prepare_molecule_data(self, smiles_list):
         """
         Prepare molecular data from SMILES strings.
@@ -148,13 +149,13 @@ def unload_model(self):
         
         # Calculate RDKit properties
         print("Calculating RDKit properties...")
-        df_input["rdkit"] = df_input["smiles"].apply(
+        df_input["molecular_features"] = df_input["smiles"].apply(
             lambda x: str(get_molecule_properties(x))
         )
         
         # Find most similar approved molecules
         print("Finding similar approved molecules...")
-        df_input["most_app"] = df_input["smiles"].apply(
+        df_input["most_similar_approved"] = df_input["smiles"].apply(
             lambda x: str(get_most_one(
                 find_similar_molecules_val(
                     boosted_model, df_embed, train_df["label"], embed_smiles([x])
@@ -165,7 +166,7 @@ def unload_model(self):
         
         # Find most similar unapproved molecules
         print("Finding similar unapproved molecules...")
-        df_input["most_nonapp"] = df_input["smiles"].apply(
+        df_input["most_similar_unapproved"] = df_input["smiles"].apply(
             lambda x: str(get_most_one(
                 find_similar_molecules_val(
                     boosted_model, df_embed, train_df["label"], embed_smiles([x])

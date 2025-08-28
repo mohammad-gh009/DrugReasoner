@@ -57,7 +57,12 @@
    ```bash
    pip install -r requirements.txt
    ```
+4. **Login to your Huggingface account**
+You can use [this](https://huggingface.co/join) instruction on how to make an account and [this](https://huggingface.co/docs/hub/en/security-tokens) on how to get the token
 
+   ```bash
+   huggingface-cli login --token YOUR_TOKEN_HERE
+   ```
 ## 🚀 How to use
 
 
