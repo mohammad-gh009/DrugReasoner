@@ -66,7 +66,7 @@ You can use [this](https://huggingface.co/join) instruction on how to make an ac
 ## 🚀 How to use
 
 
-**Note:** GPU is required for inference. If unavailable, use our [Kaggle Notebook]([link-to-kaggle](https://www.kaggle.com/code/mohammadgh009/drugreasoner)).
+**Note:** GPU is required for inference. If unavailable, use our [Kaggle Notebook](https://www.kaggle.com/code/mohammadgh009/drugreasoner).
 
 
 #### CLI Inference
