@@ -23,7 +23,7 @@ class DrugReasoner:
     A class to handle drug discovery predictions using a fine-tuned Llama model.
     """
     
-    def __init__(self, model_name="meta-llama/Llama-3.1-8B",
+    def __init__(self, model_name="meta-llama/Llama-3.1-8B-Instruct",
                  peft_model="Moreza009/Llama-DrugReasoner"):
         self.model_name = model_name
         self.peft_model = peft_model
