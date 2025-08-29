@@ -66,7 +66,7 @@ You can use [this](https://huggingface.co/join) instruction on how to make an ac
 ## 🚀 How to use
 
 
-**Note:** GPU is required for inference. If unavailable, use our [Colab Notebook]([link-to-colab](https://colab.research.google.com/drive/16OKB5q7MZ6MhWv5Q1I0QByN6DSkqx6az?usp=sharing)).
+**Note:** GPU is required for inference. If unavailable, use our [Kaggle Notebook]([link-to-kaggle](https://www.kaggle.com/code/mohammadgh009/drugreasoner)).
 
 
 #### CLI Inference
@@ -76,7 +76,7 @@ python inference.py \
     --output results.csv \
     --top-k 9 \
     --top-p 0.9 \
-    --max-length 2048 \
+    --max-length 4096 \
     --temperature 1.0
 ```
 
@@ -92,7 +92,7 @@ results = predictor.predict_molecules(
     print_results=True,
     top_k=9,
     top_p=0.9,
-    max_length=2048,
+    max_length=4096,
     temperature=1.0
 )
 ```
