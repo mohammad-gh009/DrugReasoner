@@ -1,12 +1,30 @@
 # DrugReasoner: Interpretable Drug Approval Prediction with a Reasoning-augmented Language Model
----
 
-[Logo]()
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0">
+  </a>
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
+  </a>
+  <a href="https://arxiv.org/abs/2508.18579">
+    <img src="https://img.shields.io/badge/arXiv-2508.18579-b31b1b.svg" alt="arXiv">
+  </a>
+  <a href="https://huggingface.co/Moreza009/Llama-DrugReasoner">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" alt="HuggingFace model">
+  </a>
+  <a href="https://huggingface.co/datasets/Moreza009/drug_approval_all_classes">
+    <img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-yellow" alt="Hugging Face">
+  </a>
+</p>
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-yellow)](https://huggingface.co/datasets/Moreza009/drug_approval_all_classes)
-[![arXiv](https://img.shields.io/badge/arXiv-2508.18579-b31b1b.svg)](https://arxiv.org/abs/2508.18579)
+<p align="center">
+  <img src="properties/DrugReasoner_logo.png" alt="Logo" width="500">
+</p>
+
+
+
+
 
 **DrugReasoner** is an AI-powered system for predicting drug approval outcomes using reasoning-augmented Large Language Models (LLMs) and molecular feature analysis. By combining advanced machine learning with interpretable reasoning, DrugReasoner provides transparent predictions that can accelerate pharmaceutical research and development.
 
